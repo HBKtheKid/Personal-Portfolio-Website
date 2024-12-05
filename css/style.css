@@ -407,7 +407,7 @@ nav a {
 }
 
 .img-box img:hover {
-  transform: scale(1.1);
+  transform: scale(1.02);
 }
 
 .portfolio-details .designfolio-box {
@@ -424,4 +424,13 @@ nav a {
 
 .designfolio-box .img-box img {
   width: 29rem;
+}
+
+.lets-work {
+  padding: 2rem 4rem 5rem 4rem;
+  width: inherit;
+}
+
+.lets-work p {
+  font-size: 0.7rem;
 }
