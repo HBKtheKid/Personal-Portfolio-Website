@@ -34,7 +34,7 @@
 
   <body>
     <!-- cursor -->
-    <div class="cursor"></div>
+    <!-- <div class="cursor"></div> -->
 
     <!-- header -->
     <header class="">
@@ -50,12 +50,11 @@
             style="color: #1d1d1d"
           ></i>
 
-          <nav class="d-flex justify-content-end m-0">
-            <a href="#" class="my-nav-link active">HOME</a>
-            <a href="#" class="my-nav-link">SERVICE</a>
-            <a href="#" class="my-nav-link">RESUME</a>
-            <a href="#" class="my-nav-link">PORTFOLIO</a>
-            <a href="#" class="my-nav-link">ABOUT ME</a>
+          <nav class="d-none d-lg-flex justify-content-end m-0">
+            <a href="#home" class="my-nav-link">HOME</a>
+            <a href="#service" class="my-nav-link">SERVICE</a>
+            <a href="#resume" class="my-nav-link">RESUME</a>
+            <a href="#portfolio" class="my-nav-link">PORTFOLIO</a>
           </nav>
         </div>
       </div>
@@ -63,7 +62,7 @@
     <!-- bars background -->
 
     <!-- home section -->
-    <section class="home">
+    <section class="home active" id="home">
       <div class="home-detail text-center">
         <h1 class="d-none d-lg-block">Stephen O. Ariyo</h1>
         <h1 class="d-lg-none">Stephen Ariyo</h1>
@@ -80,14 +79,12 @@
           >
         </h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis fuga
-          in sint dicta, quis dolor earum <br />
-          nobis.
+          I’m Stephen Ariyo is an graphic / UIUX designer & frontend developer
+          Based in Nigeria / working remotely worldwide.
         </p>
         <div
           class="sci d-lg-flex d-block justify-content-center align-items-center gap-3 mt-3 mt-lg-0"
         >
-          <a href="#"><button class="cv-btn p-2 px-3">Download CV</button></a>
           <div class="group d-flex gap-3 justify-content-center mt-2 mt-lg-0">
             <a href=""><i class="bx bxl-github socials"></i></a>
             <a href="https://www.linkedin.com/in/StephenAriyo/" target="new"
@@ -103,7 +100,7 @@
       </div>
     </section>
     <!-- services section -->
-    <section class="services">
+    <section class="services" id="service">
       <h2 class="heading">My Services</h2>
       <div class="container p-0">
         <div class="services-container row col">
@@ -114,8 +111,8 @@
               </div>
               <h3>Web Development</h3>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
-                unde nemo
+                I develop websites and webpages for Clients. Proficiency in
+                frontend development
               </p>
             </div>
           </div>
@@ -127,8 +124,8 @@
               </div>
               <h3>Graphic Designing</h3>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
-                unde nemo
+                I and a skilled graphic designer with certification in Adobe
+                Creative Suites
               </p>
             </div>
           </div>
@@ -140,8 +137,8 @@
               </div>
               <h3>Branding</h3>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
-                unde nemo
+                I am a brand designer and developer, i develop brand identities
+                for clients
               </p>
             </div>
           </div>
@@ -149,28 +146,27 @@
           <div class="col-12 col-lg-4 p-2">
             <div class="services-box">
               <div class="icon d-flex justify-content-between">
-                <i class="bx bx-search-alt" style="color: #1d1d1d"></i>
+                <i class="bx bx-palette" style="color: #1d1d1d"></i>
               </div>
-              <h3>SEO</h3>
+              <h3>UI/UX Designer</h3>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
-                unde nemo
+                I am a User Interface and Experience designer with proficiency
+                in figma
               </p>
             </div>
           </div>
 
-          <div class="col-12 col-lg-4 p-2">
+          <!-- <div class="col-12 col-lg-4 p-2">
             <div class="services-box">
               <div class="icon d-flex justify-content-between">
                 <i class="bx bx-cog" style="color: #1d1d1d"></i>
               </div>
               <h3>Requirement Engineering</h3>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
-                unde nemo
+                With a background in software Engineering
               </p>
             </div>
-          </div>
+          </div> -->
 
           <div class="col-12 col-lg-4 p-2">
             <div class="services-box">
@@ -179,8 +175,8 @@
               </div>
               <h3>Social Media Management</h3>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
-                unde nemo
+                I manage social media accounts for clients, increasing their
+                engagements and presence
               </p>
             </div>
           </div>
@@ -188,7 +184,7 @@
       </div>
     </section>
     <!-- resume section -->
-    <section class="resume active">
+    <section class="resume active" id="resume">
       <div class="container">
         <div class="row col">
           <div class="col-12 col-lg-4">
@@ -478,7 +474,120 @@
     </section>
 
     <!-- portfolio section -->
+    <section class="portfolio" id="portfolio">
+      <h2 class="heading">My Portfolio</h2>
+      <div class="portfolio-container container"></div>
+      <h3>Logofolio</h3>
+      <div class="row col portfolio-details">
+        <div class="col-12 col-lg-4 logofolio-box">
+          <p>1)</p>
+          <div class="img-box d-flex align-items-center justify-content-center">
+            <img
+              src="./images/favpng_minimalism-tattoo-geometry-logo.png"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 logofolio-box">
+          <p>2)</p>
+          <div class="img-box d-flex align-items-center justify-content-center">
+            <img src="./images/pngwing.com (17).png" alt="" />
+          </div>
+        </div>
 
+        <div class="col-12 col-lg-4 logofolio-box">
+          <p>3)</p>
+          <div class="img-box d-flex align-items-center justify-content-center">
+            <img src="./images/1.png" alt="" />
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 logofolio-box">
+          <p>4)</p>
+          <div class="img-box d-flex align-items-center justify-content-center">
+            <img src="./images/2.png" alt="" />
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 logofolio-box">
+          <p>5)</p>
+          <div class="img-box d-flex align-items-center justify-content-center">
+            <img src="./images/3.png" alt="" />
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 logofolio-box">
+          <p>6)</p>
+          <div class="img-box d-flex align-items-center justify-content-center">
+            <img src="./images/4.png" alt="" />
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 logofolio-box">
+          <p>7)</p>
+          <div class="img-box d-flex align-items-center justify-content-center">
+            <img src="./images/5.png" alt="" />
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 logofolio-box">
+          <p>8)</p>
+          <div class="img-box d-flex align-items-center justify-content-center">
+            <img src="./images/6.png" alt="" />
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 logofolio-box">
+          <p>9)</p>
+          <div class="img-box d-flex align-items-center justify-content-center">
+            <img src="./images/7.png" alt="" />
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 logofolio-box">
+          <p>10)</p>
+          <div class="img-box d-flex align-items-center justify-content-center">
+            <img src="./images/8.png" alt="" />
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 logofolio-box">
+          <p>11)</p>
+          <div class="img-box d-flex align-items-center justify-content-center">
+            <img src="./images/9.png" alt="" />
+          </div>
+        </div>
+      </div>
+      <hr />
+      <h3>Designfolio</h3>
+      <div class="row col portfolio-details">
+        <h2>Shoe Poster Exploration</h2>
+        <div class="col-12 col-lg-4 designfolio-box">
+          <div class="img-box d-flex align-items-center justify-content-center">
+            <img src="./images/Nike-Poster2.jpg" alt="" />
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 designfolio-box">
+          <div class="img-box d-flex align-items-center justify-content-center">
+            <img src="./images/Nike-Poster.jpg" alt="" />
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 designfolio-box">
+          <div class="img-box d-flex align-items-center justify-content-center">
+            <img src="./images/Nike-Poster3.jpg" alt="" />
+          </div>
+        </div>
+        <hr />
+        <h2></h2>
+        <div class="col-12 col-lg-4 designfolio-box">
+          <div class="img-box d-flex align-items-center justify-content-center">
+            <img src="./images/Nike-Poster2.jpg" alt="" />
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 designfolio-box">
+          <div class="img-box d-flex align-items-center justify-content-center">
+            <img src="./images/Nike-Poster.jpg" alt="" />
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 designfolio-box">
+          <div class="img-box d-flex align-items-center justify-content-center">
+            <img src="./images/Nike-Poster3.jpg" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- contact section -->
 
     <!-- Bootstrap js -->

@@ -16,9 +16,13 @@ html {
 
 body {
   background-color: #f3eeea;
-  cursor: none;
-  height: 100vh;
-  width: 100vw;
+
+  height: 100%;
+  width: 100%;
+}
+
+hr {
+  margin-bottom: 5rem;
 }
 
 .cursor {
@@ -49,15 +53,7 @@ section {
   width: 100%;
   height: 100%;
   padding: 10rem 9% 1.3rem;
-  display: none;
-  opacity: 0;
   overflow: hidden;
-}
-
-section.active {
-  display: block;
-  opacity: 1;
-  overflow: auto;
 }
 
 header {
@@ -82,10 +78,6 @@ header {
   text-decoration: underline #00fbff 2px;
   transform: scale(1.5);
   cursor: none;
-}
-
-.my-nav-link.active {
-  text-decoration: underline #00fbff 2px;
 }
 
 nav a {
@@ -156,6 +148,8 @@ nav a {
 .home p {
   font-size: 1.6rem;
   margin: 1rem 0 2.3rem;
+  overflow: hidden;
+  text-wrap: wrap;
 }
 
 .group a {
@@ -385,4 +379,49 @@ nav a {
 
 .resume-detail .about-me .logo-container {
   width: 100%;
+}
+
+.portfolio h3 {
+  font-size: 1rem;
+}
+
+.portfolio-details {
+  margin-bottom: 5rem;
+}
+
+.portfolio-details .logofolio-box {
+  padding: 2rem;
+}
+
+.portfolio-details .logofolio-box .img-box {
+  width: 100%;
+}
+
+.portfolio-details .logofolio-box p {
+  margin: 0;
+}
+
+.logofolio-box .img-box img {
+  width: 15rem;
+  transition: 1s;
+}
+
+.img-box img:hover {
+  transform: scale(1.1);
+}
+
+.portfolio-details .designfolio-box {
+  padding: 1rem;
+}
+
+.portfolio-details .designfolio-box .img-box {
+  width: 100%;
+}
+
+.portfolio-details .designfolio-box p {
+  margin: 0;
+}
+
+.designfolio-box .img-box img {
+  width: 29rem;
 }
