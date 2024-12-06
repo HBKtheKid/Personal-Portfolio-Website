@@ -6,7 +6,7 @@ const resumeDetail = document.querySelectorAll(".resume-detail");
 let timeout;
 
 // follow cursor on mouse move
-/*document.addEventListener("mousemove", function (e) {
+document.addEventListener("mousemove", function (e) {
   let x = e.pageX;
   let y = e.pageY;
 
@@ -25,7 +25,6 @@ let timeout;
 document.addEventListener("mouseout", function () {
   cursor.style.display = "none";
 });
-*/
 
 //Resume button switch active class on tap
 resumeBtn.forEach((btn, idx) => {

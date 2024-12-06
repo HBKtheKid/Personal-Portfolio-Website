@@ -16,7 +16,7 @@ html {
 
 body {
   background-color: #f3eeea;
-
+  cursor: none;
   height: 100%;
   width: 100%;
 }
@@ -54,6 +54,13 @@ section {
   height: 100%;
   padding: 10rem 9% 1.3rem;
   overflow: hidden;
+  display: none;
+  opacity: 0;
+}
+
+section.active {
+  display: block;
+  opacity: 1;
 }
 
 header {
@@ -72,6 +79,11 @@ header {
   font-weight: 600;
   color: rgb(29, 29, 29);
   transition: 0.5s;
+}
+
+.my-nav-link.active {
+  text-decoration: underline #00fbff 2px;
+  transform: scale(1.5);
 }
 
 .my-nav-link:hover {
