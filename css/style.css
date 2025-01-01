@@ -22,7 +22,7 @@ body {
 }
 
 hr {
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
 }
 
 .cursor {
@@ -397,7 +397,20 @@ nav a {
   font-size: 1rem;
 }
 
-.portfolio-details {
+.portfolio-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+}
+
+.portfolio-box .numb {
+  font-size: 8rem;
+  -webkit-text-stroke: 0.07rem black;
+  color: transparent;
+  line-height: 1;
+}
+
+/* .portfolio-details {
   margin-bottom: 5rem;
 }
 
@@ -445,4 +458,4 @@ nav a {
 
 .lets-work p {
   font-size: 0.7rem;
-}
+} */
