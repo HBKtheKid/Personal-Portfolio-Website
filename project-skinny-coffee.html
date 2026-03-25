@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wild Fashion — Stephen Ariyo</title>
+    <title>SkinnyCoffee Superboost — Stephen Ariyo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,8 +23,8 @@
         --text: #f0ede6;
         --text2: #888880;
         --text3: #555550;
-        --accent: #f97316;
-        --accent2: #fb923c;
+        --accent: #22c55e;
+        --accent2: #4ade80;
       }
       *,
       *::before,
@@ -89,6 +89,8 @@
         text-decoration: none;
         color: inherit;
       }
+
+      /* NAV */
       .project-nav {
         position: fixed;
         top: 0;
@@ -126,7 +128,7 @@
       }
       .hire-btn {
         background: var(--accent);
-        color: #fff;
+        color: #000;
         font-size: 0.8rem;
         font-weight: 700;
         padding: 0.5rem 1.2rem;
@@ -137,6 +139,8 @@
       .hire-btn:hover {
         opacity: 0.85;
       }
+
+      /* HERO */
       .project-hero {
         min-height: 70vh;
         display: flex;
@@ -148,7 +152,7 @@
       .hero-bg {
         position: absolute;
         inset: 0;
-        background: #180c08;
+        background: #0b1a0e;
       }
       .hero-bg::before {
         content: "";
@@ -156,7 +160,7 @@
         inset: 0;
         background: radial-gradient(
           ellipse at 60% 50%,
-          rgba(249, 115, 22, 0.1) 0%,
+          rgba(34, 197, 94, 0.12) 0%,
           transparent 65%
         );
       }
@@ -168,7 +172,7 @@
         font-weight: 800;
         font-size: clamp(6rem, 14vw, 14rem);
         color: transparent;
-        -webkit-text-stroke: 1px rgba(249, 115, 22, 0.05);
+        -webkit-text-stroke: 1px rgba(34, 197, 94, 0.06);
         pointer-events: none;
         letter-spacing: -0.05em;
         line-height: 1;
@@ -194,9 +198,9 @@
         text-transform: uppercase;
         padding: 0.3rem 0.8rem;
         border-radius: 3px;
-        background: rgba(249, 115, 22, 0.1);
+        background: rgba(34, 197, 94, 0.1);
         color: var(--accent);
-        border: 1px solid rgba(249, 115, 22, 0.2);
+        border: 1px solid rgba(34, 197, 94, 0.2);
       }
       .project-hero h1 {
         font-size: clamp(2.5rem, 6vw, 5rem);
@@ -216,6 +220,8 @@
         gap: 2rem;
         flex-wrap: wrap;
       }
+      .meta-item {
+      }
       .meta-label {
         font-size: 0.72rem;
         text-transform: uppercase;
@@ -229,6 +235,8 @@
         color: var(--text);
         font-weight: 500;
       }
+
+      /* STATS BAR */
       .stats-bar {
         background: var(--bg2);
         border-top: 1px solid var(--border);
@@ -263,6 +271,8 @@
         font-size: 0.8rem;
         color: var(--text2);
       }
+
+      /* CONTENT */
       .project-content {
         max-width: 1200px;
         margin: 0 auto;
@@ -300,6 +310,8 @@
       .content-main ul li::marker {
         color: var(--accent);
       }
+
+      /* SIDEBAR */
       .content-sidebar {
         position: sticky;
         top: 90px;
@@ -350,6 +362,8 @@
         font-size: 0.75rem;
         color: var(--text2);
       }
+
+      /* DELIVERABLES GRID */
       .deliverables-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -378,6 +392,8 @@
         color: var(--text3);
         line-height: 1.5;
       }
+
+      /* PROCESS STEPS */
       .process-steps {
         display: flex;
         flex-direction: column;
@@ -392,8 +408,8 @@
       .step-num {
         width: 36px;
         height: 36px;
-        background: rgba(249, 115, 22, 0.1);
-        border: 1px solid rgba(249, 115, 22, 0.2);
+        background: rgba(34, 197, 94, 0.1);
+        border: 1px solid rgba(34, 197, 94, 0.2);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -415,6 +431,8 @@
         color: var(--text2);
         line-height: 1.7;
       }
+
+      /* RESULTS HIGHLIGHTS */
       .results-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -440,6 +458,8 @@
         color: var(--text2);
         margin-top: 0.3rem;
       }
+
+      /* NEXT PROJECT */
       .next-project {
         background: var(--bg2);
         border-top: 1px solid var(--border);
@@ -473,7 +493,7 @@
         align-items: center;
         gap: 8px;
         background: var(--accent);
-        color: #fff;
+        color: #000;
         font-weight: 700;
         font-size: 0.88rem;
         padding: 0.75rem 1.5rem;
@@ -499,6 +519,8 @@
         border-color: var(--text2);
         color: var(--text);
       }
+
+      /* FADE */
       .fade-up {
         opacity: 0;
         transform: translateY(24px);
@@ -510,6 +532,7 @@
         opacity: 1;
         transform: none;
       }
+
       @media (max-width: 900px) {
         .content-grid {
           grid-template-columns: 1fr;
@@ -522,6 +545,21 @@
         }
         .results-grid {
           grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 600px) {
+        .stats-bar-inner {
+          grid-template-columns: 1fr 1fr;
+        }
+        .project-hero h1 {
+          font-size: 2.5rem;
+        }
+        .hero-meta {
+          gap: 1rem;
+        }
+        .next-inner {
+          flex-direction: column;
+          align-items: flex-start;
         }
       }
     </style>
@@ -540,19 +578,20 @@
 
     <div class="project-hero">
       <div class="hero-bg"></div>
-      <div class="hero-bg-text">WILD</div>
+      <div class="hero-bg-text">SKINNY</div>
       <div class="hero-content">
         <div class="project-tag-row">
-          <span class="ptag">Brand Identity</span
-          ><span class="ptag">Apparel Design</span
-          ><span class="ptag">Lookbooks</span
-          ><span class="ptag">AI-Assisted</span>
+          <span class="ptag">Brand Identity</span>
+          <span class="ptag">Meta Ads</span>
+          <span class="ptag">Email (Klaviyo)</span>
+          <span class="ptag">Amazon A+</span>
+          <span class="ptag">AI Video</span>
         </div>
-        <h1>Wild Fashion</h1>
+        <h1>SkinnyCoffee<br />Superboost</h1>
         <p class="sub">
-          Built a complete streetwear brand identity from zero — logo system,
-          apparel graphics, packaging, lookbooks, and AI-assisted campaign
-          visuals that increased brand recognition by 30%.
+          Creative Lead for a US-based e-commerce brand — owning all digital
+          creative output from ad strategy to Amazon A+ content, with measurable
+          revenue impact.
         </p>
         <div class="hero-meta">
           <div class="meta-item">
@@ -561,15 +600,15 @@
           </div>
           <div class="meta-item">
             <div class="meta-label">Duration</div>
-            <div class="meta-value">Dec 2023 – Mar 2025</div>
+            <div class="meta-value">Feb 2024 – Aug 2025</div>
           </div>
           <div class="meta-item">
-            <div class="meta-label">Type</div>
-            <div class="meta-value">Contract, Remote</div>
+            <div class="meta-label">Location</div>
+            <div class="meta-value">Kennesaw, GA (Remote)</div>
           </div>
           <div class="meta-item">
             <div class="meta-label">Industry</div>
-            <div class="meta-value">Fashion / Streetwear</div>
+            <div class="meta-value">E-commerce / Health</div>
           </div>
         </div>
       </div>
@@ -578,20 +617,20 @@
     <div class="stats-bar">
       <div class="stats-bar-inner">
         <div class="stat-item">
-          <div class="num">+30%</div>
-          <div class="lbl">Brand Recognition</div>
+          <div class="num">+60%</div>
+          <div class="lbl">Conversion Rate on Meta</div>
         </div>
         <div class="stat-item">
-          <div class="num">0→1</div>
-          <div class="lbl">Identity Built from Scratch</div>
+          <div class="num">+150%</div>
+          <div class="lbl">Ad Creative Output</div>
         </div>
         <div class="stat-item">
-          <div class="num">4</div>
-          <div class="lbl">Collection Launches</div>
+          <div class="num">+40%</div>
+          <div class="lbl">Team Output Speed</div>
         </div>
         <div class="stat-item">
-          <div class="num">15mo</div>
-          <div class="lbl">Project Duration</div>
+          <div class="num">18mo</div>
+          <div class="lbl">Engagement</div>
         </div>
       </div>
     </div>
@@ -601,16 +640,16 @@
         <div class="content-main fade-up">
           <h2>The Brief</h2>
           <p>
-            Wild Fashion came to me with no existing brand identity — just a
-            vision for a streetwear label that needed to feel authentic, bold,
-            and built to last. They needed everything: a name treatment, logo
-            system, color palette, typography, apparel graphics, lookbook
-            photography art direction, and packaging.
+            SkinnyCoffee Superboost is a US e-commerce brand in the health and
+            wellness space. When I joined as Senior Creative Lead, they needed
+            one person who could own the entire creative pipeline — not just
+            design individual assets, but set brand direction, lead team output,
+            and connect every creative decision back to conversion data.
           </p>
           <p>
-            The goal wasn't just to look good — it was to build brand equity
-            from day one, so that customers could recognize and connect with the
-            label across every touchpoint.
+            The challenge: high volume creative demand across Meta ads, email,
+            Amazon storefronts, and landing pages — with a small team and a need
+            to scale output without sacrificing quality.
           </p>
 
           <h2>My Approach</h2>
@@ -618,48 +657,60 @@
             <div class="process-step">
               <div class="step-num">01</div>
               <div class="step-body">
-                <h4>Brand Discovery</h4>
+                <h4>Brand Audit & Direction</h4>
                 <p>
-                  I ran a deep discovery process — competitive audit, audience
-                  persona research, mood boarding, and direction exploration.
-                  Three distinct visual directions were developed and presented
-                  before we locked the final brand language.
+                  I started by auditing the existing creative — identifying
+                  inconsistencies in tone, visual language, and messaging
+                  hierarchy. I then established brand standards and a modular
+                  creative system that the whole team could work from.
                 </p>
               </div>
             </div>
             <div class="process-step">
               <div class="step-num">02</div>
               <div class="step-body">
-                <h4>Logo System & Visual Identity</h4>
+                <h4>AI-Accelerated Production</h4>
                 <p>
-                  Built a flexible logo system — primary logo, secondary mark,
-                  and icon variant — with full usage rules. Typography pairing
-                  was chosen for legibility at both large display sizes and
-                  small garment labels.
+                  I introduced Midjourney, ChatGPT-4o, and Adobe Firefly into
+                  the workflow — not to replace design thinking, but to compress
+                  ideation time and generate visual concepts at speed. This
+                  directly drove the 150% output increase.
                 </p>
               </div>
             </div>
             <div class="process-step">
               <div class="step-num">03</div>
               <div class="step-body">
-                <h4>Apparel Graphics & Packaging</h4>
+                <h4>Meta Ad Creative Strategy</h4>
                 <p>
-                  Designed graphic tees, hoodie prints, and cap embroideries for
-                  four collections. Simultaneously developed packaging —
-                  hangtags, poly bags, tissue paper — that extended the brand
-                  into physical touchpoints.
+                  Working directly with the media buying team, I created
+                  iterative ad creative variations — different hooks, visual
+                  formats, and CTA approaches — and fed conversion data back
+                  into the design process. The result was a systematic,
+                  data-backed creative loop.
                 </p>
               </div>
             </div>
             <div class="process-step">
               <div class="step-num">04</div>
               <div class="step-body">
-                <h4>AI-Assisted Campaign Visuals</h4>
+                <h4>Email & Funnel Design</h4>
                 <p>
-                  Used ChatGPT-4o for campaign concept ideation and Midjourney
-                  for visual exploration of campaign directions before
-                  committing to production. This reduced the pre-production
-                  phase by 60% on each launch.
+                  I owned the full Klaviyo email design suite — welcome flows,
+                  post-purchase sequences, promotional campaigns — and the
+                  corresponding landing pages and funnel pages in Replo and
+                  Shopify.
+                </p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-num">05</div>
+              <div class="step-body">
+                <h4>Team Leadership & Mentoring</h4>
+                <p>
+                  I trained two junior designers on AI tools and established a
+                  review system that maintained brand quality while removing
+                  bottlenecks. This alone improved team output speed by 40%.
                 </p>
               </div>
             </div>
@@ -668,43 +719,45 @@
           <h2>Deliverables</h2>
           <div class="deliverables-grid">
             <div class="deliverable-card">
-              <div class="icon"><i class="bx bxs-paint"></i></div>
-              <div class="title">Brand Identity System</div>
+              <div class="icon"><i class="bx bx-palette"></i></div>
+              <div class="title">Brand Standards</div>
               <div class="desc">
-                Logo, palette, typography, usage guidelines
+                Full brand guidelines, tone of voice, visual direction
               </div>
             </div>
             <div class="deliverable-card">
-              <div class="icon"><i class="bx bx-t-shirt"></i></div>
-              <div class="title">Apparel Graphics</div>
+              <div class="icon"><i class="bx bx-trending-up"></i></div>
+              <div class="title">Meta Ad Creatives</div>
               <div class="desc">
-                4 collections across tees, hoodies, and caps
+                100s of static and animated ad variants across all formats
               </div>
             </div>
             <div class="deliverable-card">
-              <div class="icon"><i class="bx bx-book-open"></i></div>
-              <div class="title">Lookbooks</div>
+              <div class="icon"><i class="bx bx-envelope"></i></div>
+              <div class="title">Klaviyo Emails</div>
               <div class="desc">
-                Art-directed digital and print lookbooks per collection
+                Welcome, post-purchase, promotional and re-engagement flows
               </div>
             </div>
             <div class="deliverable-card">
-              <div class="icon"><i class="bx bx-package"></i></div>
-              <div class="title">Packaging</div>
+              <div class="icon"><i class="bx bx-store"></i></div>
+              <div class="title">Amazon A+ Content</div>
               <div class="desc">
-                Hangtags, poly bags, tissue paper, stickers
+                Enhanced brand content and storefront design
               </div>
             </div>
             <div class="deliverable-card">
-              <div class="icon"><i class="bx bx-image"></i></div>
-              <div class="title">Campaign Visuals</div>
-              <div class="desc">AI-assisted visual content for each launch</div>
+              <div class="icon"><i class="bx bx-film"></i></div>
+              <div class="title">AI Video Content</div>
+              <div class="desc">
+                Short-form video ads using Midjourney + After Effects
+              </div>
             </div>
             <div class="deliverable-card">
-              <div class="icon"><i class="bx bx-file"></i></div>
-              <div class="title">Brand Guidelines</div>
+              <div class="icon"><i class="bx bx-layout"></i></div>
+              <div class="title">Landing Pages</div>
               <div class="desc">
-                Full documentation for internal and external use
+                Funnel and product pages in Shopify / Replo
               </div>
             </div>
           </div>
@@ -712,26 +765,26 @@
           <h2>Results</h2>
           <div class="results-grid">
             <div class="result-card">
-              <div class="r-num">+30%</div>
+              <div class="r-num">+60%</div>
               <div class="r-label">
-                Customer brand recognition increase post-launch
+                Conversion rate improvement on Meta campaigns
               </div>
             </div>
             <div class="result-card">
-              <div class="r-num">4</div>
+              <div class="r-num">+150%</div>
+              <div class="r-label">Ad creative output volume increase</div>
+            </div>
+            <div class="result-card">
+              <div class="r-num">+40%</div>
               <div class="r-label">
-                Full collection launches delivered on schedule
+                Design team output speed via AI integration
               </div>
             </div>
             <div class="result-card">
-              <div class="r-num">−60%</div>
+              <div class="r-num">18mo</div>
               <div class="r-label">
-                Pre-production time reduced per launch via AI tools
+                Sustained creative engagement over the project
               </div>
-            </div>
-            <div class="result-card">
-              <div class="r-num">0→1</div>
-              <div class="r-label">Complete brand built from a blank page</div>
             </div>
           </div>
         </div>
@@ -740,7 +793,8 @@
           <div class="sidebar-card">
             <h3>Project Info</h3>
             <div class="sidebar-item">
-              <span class="k">Client</span><span class="v">Wild Fashion</span>
+              <span class="k">Client</span
+              ><span class="v">SkinnyCoffee Superboost</span>
             </div>
             <div class="sidebar-item">
               <span class="k">Role</span
@@ -748,35 +802,47 @@
             </div>
             <div class="sidebar-item">
               <span class="k">Duration</span
-              ><span class="v">Dec 2023 – Mar 2025</span>
+              ><span class="v">Feb 2024 – Aug 2025</span>
             </div>
             <div class="sidebar-item">
               <span class="k">Industry</span
-              ><span class="v">Fashion / Streetwear</span>
+              ><span class="v">E-commerce / Health</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="k">Location</span
+              ><span class="v">Kennesaw, GA (Remote)</span>
             </div>
           </div>
           <div class="sidebar-card">
             <h3>Tools Used</h3>
             <div class="tool-list">
-              <span class="tool-chip">Adobe Illustrator</span
-              ><span class="tool-chip">Photoshop</span
-              ><span class="tool-chip">InDesign</span
-              ><span class="tool-chip">Figma</span
-              ><span class="tool-chip">Midjourney</span
-              ><span class="tool-chip">ChatGPT-4o</span
-              ><span class="tool-chip">Whisk</span
-              ><span class="tool-chip">Canva</span>
+              <span class="tool-chip">Adobe Illustrator</span>
+              <span class="tool-chip">Photoshop</span>
+              <span class="tool-chip">After Effects</span>
+              <span class="tool-chip">Figma</span>
+              <span class="tool-chip">Midjourney</span>
+              <span class="tool-chip">ChatGPT-4o</span>
+              <span class="tool-chip">Adobe Firefly</span>
+              <span class="tool-chip">Klaviyo</span>
+              <span class="tool-chip">Shopify</span>
+              <span class="tool-chip">Replo</span>
+              <span class="tool-chip">Meta Ads</span>
+              <span class="tool-chip">Amazon Seller</span>
             </div>
           </div>
           <div class="sidebar-card">
             <h3>Key Outcomes</h3>
             <div class="sidebar-item">
-              <span class="k">Brand Recognition</span
-              ><span class="v" style="color: var(--accent)">+30%</span>
+              <span class="k">Conversion Rate</span
+              ><span class="v" style="color: var(--accent)">+60%</span>
             </div>
             <div class="sidebar-item">
-              <span class="k">Launches Delivered</span
-              ><span class="v" style="color: var(--accent)">4 Collections</span>
+              <span class="k">Creative Output</span
+              ><span class="v" style="color: var(--accent)">+150%</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="k">Team Speed</span
+              ><span class="v" style="color: var(--accent)">+40%</span>
             </div>
           </div>
         </div>
@@ -787,8 +853,8 @@
       <div class="next-inner">
         <div>
           <div class="next-label">Next Project</div>
-          <div class="next-title">The 17th Century — Social & Motion</div>
-          <a href="project-17th-century.html" class="next-btn"
+          <div class="next-title">Wild Fashion — Brand Identity</div>
+          <a href="project-wild-fashion.html" class="next-btn"
             >View Case Study <i class="bx bx-right-arrow-alt"></i
           ></a>
         </div>
