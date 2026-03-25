@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The 17th Century — Stephen Ariyo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0c0c0c;
+        --bg2: #131313;
+        --bg3: #1a1a1a;
+        --border: #262626;
+        --text: #f0ede6;
+        --text2: #888880;
+        --text3: #555550;
+        --accent: #6366f1;
+        --accent2: #818cf8;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Outfit", sans-serif;
+        line-height: 1.7;
+        overflow-x: hidden;
+        cursor: none;
+      }
+      .cursor {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background: var(--accent);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+      }
+      .cursor-ring {
+        position: fixed;
+        width: 36px;
+        height: 36px;
+        border: 1.5px solid var(--accent);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+        transform: translate(-50%, -50%);
+        opacity: 0.5;
+      }
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--accent);
+        border-radius: 2px;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        line-height: 1.15;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .project-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(12, 12, 12, 0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        height: 70px;
+        display: flex;
+        align-items: center;
+        padding: 0 2rem;
+        justify-content: space-between;
+      }
+      .back-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--text2);
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .back-btn:hover {
+        color: var(--accent);
+      }
+      .nav-logo {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 1.1rem;
+      }
+      .nav-logo span {
+        color: var(--accent);
+      }
+      .hire-btn {
+        background: var(--accent);
+        color: #fff;
+        font-size: 0.8rem;
+        font-weight: 700;
+        padding: 0.5rem 1.2rem;
+        border-radius: 4px;
+        transition: opacity 0.2s;
+      }
+      .hire-btn:hover {
+        opacity: 0.85;
+      }
+      .project-hero {
+        min-height: 70vh;
+        display: flex;
+        align-items: flex-end;
+        padding: 120px 2rem 5rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background: #080a18;
+      }
+      .hero-bg::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at 60% 50%,
+          rgba(99, 102, 241, 0.12) 0%,
+          transparent 65%
+        );
+      }
+      .hero-bg-text {
+        position: absolute;
+        right: -1rem;
+        bottom: -2rem;
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: clamp(5rem, 12vw, 12rem);
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(99, 102, 241, 0.06);
+        pointer-events: none;
+        letter-spacing: -0.05em;
+        line-height: 1;
+        user-select: none;
+      }
+      .hero-content {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+      .project-tag-row {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+      }
+      .ptag {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.3rem 0.8rem;
+        border-radius: 3px;
+        background: rgba(99, 102, 241, 0.1);
+        color: var(--accent);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+      }
+      .project-hero h1 {
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        margin-bottom: 1rem;
+      }
+      .project-hero .sub {
+        color: var(--text2);
+        font-size: 1.15rem;
+        max-width: 600px;
+        line-height: 1.75;
+        margin-bottom: 2rem;
+      }
+      .hero-meta {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      .meta-label {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--text3);
+        font-weight: 600;
+        margin-bottom: 0.2rem;
+      }
+      .meta-value {
+        font-size: 0.9rem;
+        color: var(--text);
+        font-weight: 500;
+      }
+      .stats-bar {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        padding: 2.5rem 2rem;
+      }
+      .stats-bar-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        background: var(--border);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .stat-item {
+        background: var(--bg2);
+        padding: 1.5rem 2rem;
+        text-align: center;
+      }
+      .stat-item .num {
+        font-family: "Syne", sans-serif;
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1;
+        margin-bottom: 0.3rem;
+      }
+      .stat-item .lbl {
+        font-size: 0.8rem;
+        color: var(--text2);
+      }
+      .project-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 5rem 2rem;
+      }
+      .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 5rem;
+        align-items: start;
+      }
+      .content-main h2 {
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        margin-top: 3rem;
+      }
+      .content-main h2:first-child {
+        margin-top: 0;
+      }
+      .content-main p {
+        color: var(--text2);
+        line-height: 1.85;
+        margin-bottom: 1.25rem;
+      }
+      .content-main ul {
+        color: var(--text2);
+        line-height: 1.85;
+        padding-left: 1.5rem;
+        margin-bottom: 1.25rem;
+      }
+      .content-main ul li {
+        margin-bottom: 0.5rem;
+      }
+      .content-main ul li::marker {
+        color: var(--accent);
+      }
+      .content-sidebar {
+        position: sticky;
+        top: 90px;
+      }
+      .sidebar-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 1.75rem;
+        margin-bottom: 1.5rem;
+      }
+      .sidebar-card h3 {
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--accent);
+        margin-bottom: 1rem;
+      }
+      .sidebar-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.88rem;
+      }
+      .sidebar-item:last-child {
+        border-bottom: none;
+      }
+      .sidebar-item .k {
+        color: var(--text3);
+      }
+      .sidebar-item .v {
+        color: var(--text);
+        font-weight: 500;
+        text-align: right;
+      }
+      .tool-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+      .tool-chip {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.25rem 0.65rem;
+        font-size: 0.75rem;
+        color: var(--text2);
+      }
+      .deliverables-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      .deliverable-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1.25rem;
+      }
+      .deliverable-card .icon {
+        font-size: 1.4rem;
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+      }
+      .deliverable-card .title {
+        font-family: "Syne", sans-serif;
+        font-size: 0.88rem;
+        font-weight: 700;
+        margin-bottom: 0.3rem;
+      }
+      .deliverable-card .desc {
+        font-size: 0.78rem;
+        color: var(--text3);
+        line-height: 1.5;
+      }
+      .process-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+      .process-step {
+        display: flex;
+        gap: 1.25rem;
+        align-items: flex-start;
+      }
+      .step-num {
+        width: 36px;
+        height: 36px;
+        background: rgba(99, 102, 241, 0.1);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Syne", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--accent);
+        flex-shrink: 0;
+      }
+      .step-body h4 {
+        font-family: "Syne", sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 0.3rem;
+      }
+      .step-body p {
+        font-size: 0.88rem;
+        color: var(--text2);
+        line-height: 1.7;
+      }
+      .results-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      .result-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--accent);
+        border-radius: 8px;
+        padding: 1.25rem;
+      }
+      .result-card .r-num {
+        font-family: "Syne", sans-serif;
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1;
+      }
+      .result-card .r-label {
+        font-size: 0.82rem;
+        color: var(--text2);
+        margin-top: 0.3rem;
+      }
+      .next-project {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        padding: 4rem 2rem;
+      }
+      .next-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      .next-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--text3);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+      .next-title {
+        font-family: "Syne", sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-bottom: 0.75rem;
+      }
+      .next-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--accent);
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.88rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 4px;
+        transition: opacity 0.2s;
+      }
+      .next-btn:hover {
+        opacity: 0.85;
+      }
+      .all-work-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: transparent;
+        color: var(--text2);
+        font-size: 0.88rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 4px;
+        border: 1px solid var(--border);
+        transition: all 0.2s;
+      }
+      .all-work-btn:hover {
+        border-color: var(--text2);
+        color: var(--text);
+      }
+      .fade-up {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .fade-up.visible {
+        opacity: 1;
+        transform: none;
+      }
+      @media (max-width: 900px) {
+        .content-grid {
+          grid-template-columns: 1fr;
+        }
+        .content-sidebar {
+          position: static;
+        }
+        .stats-bar-inner {
+          grid-template-columns: 1fr 1fr;
+        }
+        .results-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+    <nav class="project-nav">
+      <a href="index.html#portfolio" class="back-btn"
+        ><i class="bx bx-arrow-back"></i> Back to Work</a
+      >
+      <a href="index.html" class="nav-logo">S<span>.</span>Ariyo</a>
+      <a href="index.html#contact" class="hire-btn">Hire Me</a>
+    </nav>
+    <div class="project-hero">
+      <div class="hero-bg"></div>
+      <div class="hero-bg-text">CENTURY</div>
+      <div class="hero-content">
+        <div class="project-tag-row">
+          <span class="ptag">Social Media</span
+          ><span class="ptag">Motion Graphics</span
+          ><span class="ptag">Brand</span><span class="ptag">Fashion</span>
+        </div>
+        <h1>The 17th Century</h1>
+        <p class="sub">
+          Led creative execution for a fashion and lifestyle brand — campaign
+          visuals, animated assets, short-form video edits, and brand guidelines
+          that drove a 30% audience engagement lift.
+        </p>
+        <div class="hero-meta">
+          <div class="meta-item">
+            <div class="meta-label">Role</div>
+            <div class="meta-value">Graphic Designer / Creative</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Duration</div>
+            <div class="meta-value">Jun 2023 – Oct 2024</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Type</div>
+            <div class="meta-value">Contract, Remote</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Industry</div>
+            <div class="meta-value">Fashion / Lifestyle</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stats-bar">
+      <div class="stats-bar-inner">
+        <div class="stat-item">
+          <div class="num">+25%</div>
+          <div class="lbl">Brand Visibility</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">+30%</div>
+          <div class="lbl">Audience Engagement</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">16mo</div>
+          <div class="lbl">Project Duration</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">3+</div>
+          <div class="lbl">Campaign Seasons</div>
+        </div>
+      </div>
+    </div>
+    <div class="project-content">
+      <div class="content-grid">
+        <div class="content-main fade-up">
+          <h2>The Brief</h2>
+          <p>
+            The 17th Century is a fashion and lifestyle brand with an aesthetic
+            rooted in nostalgia, craft, and detail. The challenge was
+            translating that editorial vision into social-media-native content —
+            formats that work on Instagram Reels and TikTok while still feeling
+            like the brand, not just content for content's sake.
+          </p>
+          <p>
+            They needed a creative partner who could work across statics,
+            motion, and video simultaneously, maintaining brand cohesion across
+            all channels while keeping up with fast-paced seasonal campaign
+            output.
+          </p>
+          <h2>My Approach</h2>
+          <div class="process-steps">
+            <div class="process-step">
+              <div class="step-num">01</div>
+              <div class="step-body">
+                <h4>Brand Audit & Content Strategy</h4>
+                <p>
+                  Mapped the existing content landscape and identified gaps
+                  between the brand's visual identity and its social presence.
+                  Created a seasonal content calendar framework that aligned
+                  campaign shoots with organic social output.
+                </p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-num">02</div>
+              <div class="step-body">
+                <h4>Static Campaign Visuals</h4>
+                <p>
+                  Designed high-quality still imagery for each seasonal campaign
+                  — product flats, lifestyle composites, and editorial-style
+                  graphic overlays. Every asset was optimised for feed, story,
+                  and paid ad dimensions.
+                </p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-num">03</div>
+              <div class="step-body">
+                <h4>Motion & Animated Assets</h4>
+                <p>
+                  Produced animated story templates, reel transitions, and
+                  short-form video edits using After Effects and Premiere Pro.
+                  Motion language was developed as an extension of the still
+                  brand identity — consistent timing, easing, and colour.
+                </p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-num">04</div>
+              <div class="step-body">
+                <h4>Brand Guidelines Update</h4>
+                <p>
+                  Codified the brand's evolving visual identity into an updated
+                  set of guidelines covering social templates, colour usage,
+                  motion principles, and dos/don'ts for external content
+                  creators.
+                </p>
+              </div>
+            </div>
+          </div>
+          <h2>Deliverables</h2>
+          <div class="deliverables-grid">
+            <div class="deliverable-card">
+              <div class="icon"><i class="bx bx-image-alt"></i></div>
+              <div class="title">Campaign Visuals</div>
+              <div class="desc">
+                Seasonal still photography composites and edits
+              </div>
+            </div>
+            <div class="deliverable-card">
+              <div class="icon"><i class="bx bx-film"></i></div>
+              <div class="title">Reels & Video Edits</div>
+              <div class="desc">
+                Short-form video edits for Instagram and TikTok
+              </div>
+            </div>
+            <div class="deliverable-card">
+              <div class="icon"><i class="bx bx-play-circle"></i></div>
+              <div class="title">Animated Assets</div>
+              <div class="desc">
+                Story templates, transitions, motion graphics
+              </div>
+            </div>
+            <div class="deliverable-card">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <div class="title">Brand Guidelines</div>
+              <div class="desc">
+                Updated guide covering social, motion, and templates
+              </div>
+            </div>
+          </div>
+          <h2>Results</h2>
+          <div class="results-grid">
+            <div class="result-card">
+              <div class="r-num">+25%</div>
+              <div class="r-label">
+                Brand visibility improvement across social channels
+              </div>
+            </div>
+            <div class="result-card">
+              <div class="r-num">+30%</div>
+              <div class="r-label">Audience engagement rate increase</div>
+            </div>
+            <div class="result-card">
+              <div class="r-num">3</div>
+              <div class="r-label">Full seasonal campaigns delivered</div>
+            </div>
+            <div class="result-card">
+              <div class="r-num">16mo</div>
+              <div class="r-label">
+                Consistent creative output across all formats
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-sidebar">
+          <div class="sidebar-card">
+            <h3>Project Info</h3>
+            <div class="sidebar-item">
+              <span class="k">Client</span
+              ><span class="v">The 17th Century</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="k">Role</span
+              ><span class="v">Creative Designer</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="k">Duration</span
+              ><span class="v">Jun 2023 – Oct 2024</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="k">Industry</span
+              ><span class="v">Fashion / Lifestyle</span>
+            </div>
+          </div>
+          <div class="sidebar-card">
+            <h3>Tools Used</h3>
+            <div class="tool-list">
+              <span class="tool-chip">After Effects</span
+              ><span class="tool-chip">Premiere Pro</span
+              ><span class="tool-chip">Photoshop</span
+              ><span class="tool-chip">Illustrator</span
+              ><span class="tool-chip">Figma</span
+              ><span class="tool-chip">CapCut</span>
+            </div>
+          </div>
+          <div class="sidebar-card">
+            <h3>Key Outcomes</h3>
+            <div class="sidebar-item">
+              <span class="k">Visibility</span
+              ><span class="v" style="color: var(--accent)">+25%</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="k">Engagement</span
+              ><span class="v" style="color: var(--accent)">+30%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="next-project">
+      <div class="next-inner">
+        <div>
+          <div class="next-label">Next Project</div>
+          <div class="next-title">The Whole Bakery Trading</div>
+          <a href="project-whole-bakery.html" class="next-btn"
+            >View Case Study <i class="bx bx-right-arrow-alt"></i
+          ></a>
+        </div>
+        <a href="index.html#portfolio" class="all-work-btn"
+          ><i class="bx bx-grid-alt"></i> All Work</a
+        >
+      </div>
+    </div>
+    <script>
+      const cursor = document.getElementById("cursor"),
+        ring = document.getElementById("cursor-ring");
+      let mx = 0,
+        my = 0,
+        rx = 0,
+        ry = 0;
+      document.addEventListener("mousemove", (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        cursor.style.left = mx + "px";
+        cursor.style.top = my + "px";
+      });
+      (function a() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.left = rx + "px";
+        ring.style.top = ry + "px";
+        requestAnimationFrame(a);
+      })();
+      const obs = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          }),
+        { threshold: 0.1 },
+      );
+      document.querySelectorAll(".fade-up").forEach((el) => obs.observe(el));
+    </script>
+  </body>
+</html>

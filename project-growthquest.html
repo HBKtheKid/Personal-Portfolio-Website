@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrowthQuest — Stephen Ariyo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0c0c0c;
+        --bg2: #131313;
+        --bg3: #1a1a1a;
+        --border: #262626;
+        --text: #f0ede6;
+        --text2: #888880;
+        --text3: #555550;
+        --accent: #8b5cf6;
+        --accent2: #a78bfa;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Outfit", sans-serif;
+        line-height: 1.7;
+        overflow-x: hidden;
+        cursor: none;
+      }
+      .cursor {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background: var(--accent);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+      }
+      .cursor-ring {
+        position: fixed;
+        width: 36px;
+        height: 36px;
+        border: 1.5px solid var(--accent);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+        transform: translate(-50%, -50%);
+        opacity: 0.5;
+      }
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--accent);
+        border-radius: 2px;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        line-height: 1.15;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .project-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(12, 12, 12, 0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        height: 70px;
+        display: flex;
+        align-items: center;
+        padding: 0 2rem;
+        justify-content: space-between;
+      }
+      .back-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--text2);
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .back-btn:hover {
+        color: var(--accent);
+      }
+      .nav-logo {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 1.1rem;
+      }
+      .nav-logo span {
+        color: var(--accent);
+      }
+      .hire-btn {
+        background: var(--accent);
+        color: #fff;
+        font-size: 0.8rem;
+        font-weight: 700;
+        padding: 0.5rem 1.2rem;
+        border-radius: 4px;
+        transition: opacity 0.2s;
+      }
+      .hire-btn:hover {
+        opacity: 0.85;
+      }
+      .project-hero {
+        min-height: 70vh;
+        display: flex;
+        align-items: flex-end;
+        padding: 120px 2rem 5rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background: #0d0a18;
+      }
+      .hero-bg::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at 60% 50%,
+          rgba(139, 92, 246, 0.1) 0%,
+          transparent 65%
+        );
+      }
+      .hero-bg-text {
+        position: absolute;
+        right: -1rem;
+        bottom: -2rem;
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: clamp(5rem, 13vw, 13rem);
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(139, 92, 246, 0.05);
+        pointer-events: none;
+        letter-spacing: -0.05em;
+        line-height: 1;
+        user-select: none;
+      }
+      .hero-content {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+      .project-tag-row {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+      }
+      .ptag {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.3rem 0.8rem;
+        border-radius: 3px;
+        background: rgba(139, 92, 246, 0.1);
+        color: var(--accent);
+        border: 1px solid rgba(139, 92, 246, 0.2);
+      }
+      .project-hero h1 {
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        margin-bottom: 1rem;
+      }
+      .project-hero .sub {
+        color: var(--text2);
+        font-size: 1.15rem;
+        max-width: 600px;
+        line-height: 1.75;
+        margin-bottom: 2rem;
+      }
+      .hero-meta {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      .meta-label {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--text3);
+        font-weight: 600;
+        margin-bottom: 0.2rem;
+      }
+      .meta-value {
+        font-size: 0.9rem;
+        color: var(--text);
+        font-weight: 500;
+      }
+      .stats-bar {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        padding: 2.5rem 2rem;
+      }
+      .stats-bar-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        background: var(--border);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .stat-item {
+        background: var(--bg2);
+        padding: 1.5rem 2rem;
+        text-align: center;
+      }
+      .stat-item .num {
+        font-family: "Syne", sans-serif;
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1;
+        margin-bottom: 0.3rem;
+      }
+      .stat-item .lbl {
+        font-size: 0.8rem;
+        color: var(--text2);
+      }
+      .project-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 5rem 2rem;
+      }
+      .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 5rem;
+        align-items: start;
+      }
+      .content-main h2 {
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        margin-top: 3rem;
+      }
+      .content-main h2:first-child {
+        margin-top: 0;
+      }
+      .content-main p {
+        color: var(--text2);
+        line-height: 1.85;
+        margin-bottom: 1.25rem;
+      }
+      .content-main ul {
+        color: var(--text2);
+        line-height: 1.85;
+        padding-left: 1.5rem;
+        margin-bottom: 1.25rem;
+      }
+      .content-main ul li {
+        margin-bottom: 0.5rem;
+      }
+      .content-main ul li::marker {
+        color: var(--accent);
+      }
+      .content-sidebar {
+        position: sticky;
+        top: 90px;
+      }
+      .sidebar-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 1.75rem;
+        margin-bottom: 1.5rem;
+      }
+      .sidebar-card h3 {
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--accent);
+        margin-bottom: 1rem;
+      }
+      .sidebar-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.88rem;
+      }
+      .sidebar-item:last-child {
+        border-bottom: none;
+      }
+      .sidebar-item .k {
+        color: var(--text3);
+      }
+      .sidebar-item .v {
+        color: var(--text);
+        font-weight: 500;
+        text-align: right;
+      }
+      .tool-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+      .tool-chip {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.25rem 0.65rem;
+        font-size: 0.75rem;
+        color: var(--text2);
+      }
+      .deliverables-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      .deliverable-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1.25rem;
+      }
+      .deliverable-card .icon {
+        font-size: 1.4rem;
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+      }
+      .deliverable-card .title {
+        font-family: "Syne", sans-serif;
+        font-size: 0.88rem;
+        font-weight: 700;
+        margin-bottom: 0.3rem;
+      }
+      .deliverable-card .desc {
+        font-size: 0.78rem;
+        color: var(--text3);
+        line-height: 1.5;
+      }
+      .process-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+      .process-step {
+        display: flex;
+        gap: 1.25rem;
+        align-items: flex-start;
+      }
+      .step-num {
+        width: 36px;
+        height: 36px;
+        background: rgba(139, 92, 246, 0.1);
+        border: 1px solid rgba(139, 92, 246, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Syne", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--accent);
+        flex-shrink: 0;
+      }
+      .step-body h4 {
+        font-family: "Syne", sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 0.3rem;
+      }
+      .step-body p {
+        font-size: 0.88rem;
+        color: var(--text2);
+        line-height: 1.7;
+      }
+      .results-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      .result-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--accent);
+        border-radius: 8px;
+        padding: 1.25rem;
+      }
+      .result-card .r-num {
+        font-family: "Syne", sans-serif;
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1;
+      }
+      .result-card .r-label {
+        font-size: 0.82rem;
+        color: var(--text2);
+        margin-top: 0.3rem;
+      }
+      .client-sectors {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 0.75rem;
+        margin-top: 1.25rem;
+      }
+      .sector-tag {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 0.75rem 1rem;
+        font-size: 0.82rem;
+        font-weight: 500;
+        color: var(--text2);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .sector-tag i {
+        color: var(--accent);
+      }
+      .next-project {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        padding: 4rem 2rem;
+      }
+      .next-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      .next-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--text3);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+      .next-title {
+        font-family: "Syne", sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-bottom: 0.75rem;
+      }
+      .next-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--accent);
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.88rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 4px;
+        transition: opacity 0.2s;
+      }
+      .next-btn:hover {
+        opacity: 0.85;
+      }
+      .all-work-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: transparent;
+        color: var(--text2);
+        font-size: 0.88rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 4px;
+        border: 1px solid var(--border);
+        transition: all 0.2s;
+      }
+      .all-work-btn:hover {
+        border-color: var(--text2);
+        color: var(--text);
+      }
+      .fade-up {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .fade-up.visible {
+        opacity: 1;
+        transform: none;
+      }
+      @media (max-width: 900px) {
+        .content-grid {
+          grid-template-columns: 1fr;
+        }
+        .content-sidebar {
+          position: static;
+        }
+        .stats-bar-inner {
+          grid-template-columns: 1fr 1fr;
+        }
+        .results-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+    <nav class="project-nav">
+      <a href="index.html#portfolio" class="back-btn"
+        ><i class="bx bx-arrow-back"></i> Back to Work</a
+      >
+      <a href="index.html" class="nav-logo">S<span>.</span>Ariyo</a>
+      <a href="index.html#contact" class="hire-btn">Hire Me</a>
+    </nav>
+    <div class="project-hero">
+      <div class="hero-bg"></div>
+      <div class="hero-bg-text">GROWTH</div>
+      <div class="hero-content">
+        <div class="project-tag-row">
+          <span class="ptag">Multi-Client Agency</span
+          ><span class="ptag">E-commerce</span><span class="ptag">SaaS</span
+          ><span class="ptag">Ad Creatives</span><span class="ptag">Video</span>
+        </div>
+        <h1>GrowthQuest</h1>
+        <p class="sub">
+          50+ monthly ad creatives, branded assets, and short-form video edits
+          across 10+ simultaneous clients — e-commerce, SaaS, and high-ticket.
+          100% on-time delivery rate.
+        </p>
+        <div class="hero-meta">
+          <div class="meta-item">
+            <div class="meta-label">Role</div>
+            <div class="meta-value">Graphic Designer & Video Editor</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Duration</div>
+            <div class="meta-value">Aug 2025 – Present</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Type</div>
+            <div class="meta-value">Agency, Remote</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Clients</div>
+            <div class="meta-value">10+ Simultaneous</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stats-bar">
+      <div class="stats-bar-inner">
+        <div class="stat-item">
+          <div class="num">50+</div>
+          <div class="lbl">Assets / Month</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">10+</div>
+          <div class="lbl">Simultaneous Clients</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">+35%</div>
+          <div class="lbl">SaaS Trial-to-Paid Conversion</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">100%</div>
+          <div class="lbl">On-Time Delivery Rate</div>
+        </div>
+      </div>
+    </div>
+    <div class="project-content">
+      <div class="content-grid">
+        <div class="content-main fade-up">
+          <h2>The Brief</h2>
+          <p>
+            GrowthQuest is a performance-focused creative agency. My role is to
+            manage the full creative output for multiple clients simultaneously
+            — ad creatives, brand assets, social media content, and short-form
+            video — all to deadline, all to a consistent standard.
+          </p>
+          <p>
+            This is the most demanding operational role I've held, and it's
+            where my systems-level thinking, AI-accelerated production, and
+            project management discipline all come together under real pressure.
+          </p>
+          <h2>Client Sectors</h2>
+          <div class="client-sectors">
+            <div class="sector-tag"><i class="bx bx-store"></i> E-commerce</div>
+            <div class="sector-tag"><i class="bx bx-code-alt"></i> SaaS</div>
+            <div class="sector-tag">
+              <i class="bx bx-diamond"></i> High-Ticket
+            </div>
+            <div class="sector-tag">
+              <i class="bx bx-building"></i> Local Business
+            </div>
+            <div class="sector-tag">
+              <i class="bx bx-trending-up"></i> Finance
+            </div>
+            <div class="sector-tag"><i class="bx bx-heart"></i> Wellness</div>
+          </div>
+          <h2>My Approach</h2>
+          <div class="process-steps">
+            <div class="process-step">
+              <div class="step-num">01</div>
+              <div class="step-body">
+                <h4>Client Brief Intake System</h4>
+                <p>
+                  Built a standardised brief intake and creative production
+                  system that lets me absorb new client briefs rapidly and
+                  produce on-brand assets without constant back-and-forth. This
+                  was key to scaling to 10+ clients.
+                </p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-num">02</div>
+              <div class="step-body">
+                <h4>AI-Accelerated Ideation</h4>
+                <p>
+                  Midjourney and ChatGPT-4o are embedded in every project — from
+                  initial concept generation to copy hooks for ad creatives. I
+                  estimate AI tools cut my ideation phase by 50% per client,
+                  freeing time for execution quality.
+                </p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-num">03</div>
+              <div class="step-body">
+                <h4>Weekly Creative Sprints</h4>
+                <p>
+                  Operate in weekly sprints with structured check-ins — design,
+                  review, revise, deliver. Every client gets a dedicated batch
+                  delivery slot and a shared asset library maintained in
+                  real-time.
+                </p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-num">04</div>
+              <div class="step-body">
+                <h4>Performance Feedback Loop</h4>
+                <p>
+                  For clients with active paid campaigns, I track ad performance
+                  and feed the data back into creative decisions. The 35%
+                  trial-to-paid improvement for the SaaS client came directly
+                  from iterating on hook-based creative after analysing CTR
+                  data.
+                </p>
+              </div>
+            </div>
+          </div>
+          <h2>Deliverables</h2>
+          <div class="deliverables-grid">
+            <div class="deliverable-card">
+              <div class="icon"><i class="bx bx-trending-up"></i></div>
+              <div class="title">Ad Creatives</div>
+              <div class="desc">
+                Static and animated Meta / Google ad variants
+              </div>
+            </div>
+            <div class="deliverable-card">
+              <div class="icon"><i class="bx bx-film"></i></div>
+              <div class="title">Short-Form Video</div>
+              <div class="desc">Reels, TikTok edits, and explainer videos</div>
+            </div>
+            <div class="deliverable-card">
+              <div class="icon"><i class="bx bxs-paint"></i></div>
+              <div class="title">Brand Identities</div>
+              <div class="desc">
+                5+ full brand builds for local business clients
+              </div>
+            </div>
+            <div class="deliverable-card">
+              <div class="icon"><i class="bx bx-layout"></i></div>
+              <div class="title">Landing Pages</div>
+              <div class="desc">Conversion-focused pages for campaigns</div>
+            </div>
+            <div class="deliverable-card">
+              <div class="icon"><i class="bx bx-images"></i></div>
+              <div class="title">Social Assets</div>
+              <div class="desc">
+                Feed posts, story templates, highlight covers
+              </div>
+            </div>
+            <div class="deliverable-card">
+              <div class="icon"><i class="bx bx-envelope"></i></div>
+              <div class="title">Email Design</div>
+              <div class="desc">Campaign and flow email templates</div>
+            </div>
+          </div>
+          <h2>Results</h2>
+          <div class="results-grid">
+            <div class="result-card">
+              <div class="r-num">50+</div>
+              <div class="r-label">
+                Assets delivered per month across all clients
+              </div>
+            </div>
+            <div class="result-card">
+              <div class="r-num">+40%</div>
+              <div class="r-label">
+                Client roster growth in first 6 months through referrals
+              </div>
+            </div>
+            <div class="result-card">
+              <div class="r-num">+35%</div>
+              <div class="r-label">
+                Trial-to-paid conversion improvement for SaaS client
+              </div>
+            </div>
+            <div class="result-card">
+              <div class="r-num">100%</div>
+              <div class="r-label">
+                On-time delivery maintained across all clients
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-sidebar">
+          <div class="sidebar-card">
+            <h3>Project Info</h3>
+            <div class="sidebar-item">
+              <span class="k">Agency</span><span class="v">GrowthQuest</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="k">Role</span
+              ><span class="v">Designer & Video Editor</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="k">Start</span
+              ><span class="v">Aug 2025 – Present</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="k">Clients</span
+              ><span class="v">10+ Simultaneous</span>
+            </div>
+          </div>
+          <div class="sidebar-card">
+            <h3>Tools Used</h3>
+            <div class="tool-list">
+              <span class="tool-chip">Illustrator</span
+              ><span class="tool-chip">Photoshop</span
+              ><span class="tool-chip">After Effects</span
+              ><span class="tool-chip">Premiere Pro</span
+              ><span class="tool-chip">Figma</span
+              ><span class="tool-chip">Midjourney</span
+              ><span class="tool-chip">ChatGPT-4o</span
+              ><span class="tool-chip">CapCut</span
+              ><span class="tool-chip">Canva</span>
+            </div>
+          </div>
+          <div class="sidebar-card">
+            <h3>Key Outcomes</h3>
+            <div class="sidebar-item">
+              <span class="k">Monthly Assets</span
+              ><span class="v" style="color: var(--accent)">50+</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="k">Delivery Rate</span
+              ><span class="v" style="color: var(--accent)">100%</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="k">SaaS Conversion</span
+              ><span class="v" style="color: var(--accent)">+35%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="next-project">
+      <div class="next-inner">
+        <div>
+          <div class="next-label">Next Project</div>
+          <div class="next-title">AI-Integrated Design Workflow</div>
+          <a href="project-ai-workflow.html" class="next-btn"
+            >View Case Study <i class="bx bx-right-arrow-alt"></i
+          ></a>
+        </div>
+        <a href="index.html#portfolio" class="all-work-btn"
+          ><i class="bx bx-grid-alt"></i> All Work</a
+        >
+      </div>
+    </div>
+    <script>
+      const cursor = document.getElementById("cursor"),
+        ring = document.getElementById("cursor-ring");
+      let mx = 0,
+        my = 0,
+        rx = 0,
+        ry = 0;
+      document.addEventListener("mousemove", (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        cursor.style.left = mx + "px";
+        cursor.style.top = my + "px";
+      });
+      (function a() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.left = rx + "px";
+        ring.style.top = ry + "px";
+        requestAnimationFrame(a);
+      })();
+      const obs = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          }),
+        { threshold: 0.1 },
+      );
+      document.querySelectorAll(".fade-up").forEach((el) => obs.observe(el));
+    </script>
+  </body>
+</html>

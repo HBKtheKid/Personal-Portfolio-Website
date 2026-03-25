@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI-Integrated Design Workflow — Stephen Ariyo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0c0c0c;
+        --bg2: #131313;
+        --bg3: #1a1a1a;
+        --border: #262626;
+        --text: #f0ede6;
+        --text2: #888880;
+        --text3: #555550;
+        --accent: #06b6d4;
+        --accent2: #22d3ee;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Outfit", sans-serif;
+        line-height: 1.7;
+        overflow-x: hidden;
+        cursor: none;
+      }
+      .cursor {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background: var(--accent);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+      }
+      .cursor-ring {
+        position: fixed;
+        width: 36px;
+        height: 36px;
+        border: 1.5px solid var(--accent);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+        transform: translate(-50%, -50%);
+        opacity: 0.5;
+      }
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--accent);
+        border-radius: 2px;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        line-height: 1.15;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .project-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(12, 12, 12, 0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        height: 70px;
+        display: flex;
+        align-items: center;
+        padding: 0 2rem;
+        justify-content: space-between;
+      }
+      .back-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--text2);
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .back-btn:hover {
+        color: var(--accent);
+      }
+      .nav-logo {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 1.1rem;
+      }
+      .nav-logo span {
+        color: var(--accent);
+      }
+      .hire-btn {
+        background: var(--accent);
+        color: #000;
+        font-size: 0.8rem;
+        font-weight: 700;
+        padding: 0.5rem 1.2rem;
+        border-radius: 4px;
+        transition: opacity 0.2s;
+      }
+      .hire-btn:hover {
+        opacity: 0.85;
+      }
+      .project-hero {
+        min-height: 70vh;
+        display: flex;
+        align-items: flex-end;
+        padding: 120px 2rem 5rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background: #060f12;
+      }
+      .hero-bg::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at 60% 50%,
+          rgba(6, 182, 212, 0.1) 0%,
+          transparent 65%
+        );
+      }
+      .hero-bg-text {
+        position: absolute;
+        right: -1rem;
+        bottom: -2rem;
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: clamp(6rem, 14vw, 14rem);
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(6, 182, 212, 0.05);
+        pointer-events: none;
+        letter-spacing: -0.05em;
+        line-height: 1;
+        user-select: none;
+      }
+      .hero-content {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+      .project-tag-row {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+      }
+      .ptag {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.3rem 0.8rem;
+        border-radius: 3px;
+        background: rgba(6, 182, 212, 0.1);
+        color: var(--accent);
+        border: 1px solid rgba(6, 182, 212, 0.2);
+      }
+      .project-hero h1 {
+        font-size: clamp(2rem, 5vw, 4.5rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        margin-bottom: 1rem;
+      }
+      .project-hero .sub {
+        color: var(--text2);
+        font-size: 1.15rem;
+        max-width: 600px;
+        line-height: 1.75;
+        margin-bottom: 2rem;
+      }
+      .hero-meta {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      .meta-label {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--text3);
+        font-weight: 600;
+        margin-bottom: 0.2rem;
+      }
+      .meta-value {
+        font-size: 0.9rem;
+        color: var(--text);
+        font-weight: 500;
+      }
+      .stats-bar {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        padding: 2.5rem 2rem;
+      }
+      .stats-bar-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        background: var(--border);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .stat-item {
+        background: var(--bg2);
+        padding: 1.5rem 2rem;
+        text-align: center;
+      }
+      .stat-item .num {
+        font-family: "Syne", sans-serif;
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1;
+        margin-bottom: 0.3rem;
+      }
+      .stat-item .lbl {
+        font-size: 0.8rem;
+        color: var(--text2);
+      }
+      .project-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 5rem 2rem;
+      }
+      .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 5rem;
+        align-items: start;
+      }
+      .content-main h2 {
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        margin-top: 3rem;
+      }
+      .content-main h2:first-child {
+        margin-top: 0;
+      }
+      .content-main p {
+        color: var(--text2);
+        line-height: 1.85;
+        margin-bottom: 1.25rem;
+      }
+      .content-main ul {
+        color: var(--text2);
+        line-height: 1.85;
+        padding-left: 1.5rem;
+        margin-bottom: 1.25rem;
+      }
+      .content-main ul li {
+        margin-bottom: 0.5rem;
+      }
+      .content-main ul li::marker {
+        color: var(--accent);
+      }
+      .content-sidebar {
+        position: sticky;
+        top: 90px;
+      }
+      .sidebar-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 1.75rem;
+        margin-bottom: 1.5rem;
+      }
+      .sidebar-card h3 {
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--accent);
+        margin-bottom: 1rem;
+      }
+      .sidebar-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.88rem;
+      }
+      .sidebar-item:last-child {
+        border-bottom: none;
+      }
+      .sidebar-item .k {
+        color: var(--text3);
+      }
+      .sidebar-item .v {
+        color: var(--text);
+        font-weight: 500;
+        text-align: right;
+      }
+      .tool-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+      .tool-chip {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.25rem 0.65rem;
+        font-size: 0.75rem;
+        color: var(--text2);
+      }
+      .workflow-step {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 1.25rem;
+        align-items: start;
+      }
+      .ws-icon {
+        width: 44px;
+        height: 44px;
+        background: rgba(6, 182, 212, 0.1);
+        border: 1px solid rgba(6, 182, 212, 0.2);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        color: var(--accent);
+        flex-shrink: 0;
+      }
+      .ws-content h4 {
+        font-family: "Syne", sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+      .ws-content p {
+        font-size: 0.88rem;
+        color: var(--text2);
+        line-height: 1.7;
+      }
+      .tools-highlight {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 0.75rem;
+        margin-top: 1.25rem;
+      }
+      .tool-highlight-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem;
+        text-align: center;
+      }
+      .tool-highlight-card .icon {
+        font-size: 1.6rem;
+        color: var(--accent);
+        margin-bottom: 0.4rem;
+      }
+      .tool-highlight-card .name {
+        font-family: "Syne", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 700;
+        margin-bottom: 0.2rem;
+      }
+      .tool-highlight-card .use {
+        font-size: 0.72rem;
+        color: var(--text3);
+      }
+      .results-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      .result-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--accent);
+        border-radius: 8px;
+        padding: 1.25rem;
+      }
+      .result-card .r-num {
+        font-family: "Syne", sans-serif;
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1;
+      }
+      .result-card .r-label {
+        font-size: 0.82rem;
+        color: var(--text2);
+        margin-top: 0.3rem;
+      }
+      .next-project {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        padding: 4rem 2rem;
+      }
+      .next-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      .next-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--text3);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+      .next-title {
+        font-family: "Syne", sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-bottom: 0.75rem;
+      }
+      .next-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--accent);
+        color: #000;
+        font-weight: 700;
+        font-size: 0.88rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 4px;
+        transition: opacity 0.2s;
+      }
+      .next-btn:hover {
+        opacity: 0.85;
+      }
+      .all-work-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: transparent;
+        color: var(--text2);
+        font-size: 0.88rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 4px;
+        border: 1px solid var(--border);
+        transition: all 0.2s;
+      }
+      .all-work-btn:hover {
+        border-color: var(--text2);
+        color: var(--text);
+      }
+      .fade-up {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .fade-up.visible {
+        opacity: 1;
+        transform: none;
+      }
+      @media (max-width: 900px) {
+        .content-grid {
+          grid-template-columns: 1fr;
+        }
+        .content-sidebar {
+          position: static;
+        }
+        .stats-bar-inner {
+          grid-template-columns: 1fr 1fr;
+        }
+        .results-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+    <nav class="project-nav">
+      <a href="index.html#portfolio" class="back-btn"
+        ><i class="bx bx-arrow-back"></i> Back to Work</a
+      >
+      <a href="index.html" class="nav-logo">S<span>.</span>Ariyo</a>
+      <a href="index.html#contact" class="hire-btn">Hire Me</a>
+    </nav>
+    <div class="project-hero">
+      <div class="hero-bg"></div>
+      <div class="hero-bg-text">AI</div>
+      <div class="hero-content">
+        <div class="project-tag-row">
+          <span class="ptag">AI Workflow</span
+          ><span class="ptag">Creative Direction</span
+          ><span class="ptag">Team Leadership</span
+          ><span class="ptag">Systems Design</span>
+        </div>
+        <h1>AI-Integrated<br />Design Workflow</h1>
+        <p class="sub">
+          How I built and implemented an AI tool integration strategy that
+          increased a design team's output speed by 40% — without compromising
+          creative quality.
+        </p>
+        <div class="hero-meta">
+          <div class="meta-item">
+            <div class="meta-label">Context</div>
+            <div class="meta-value">SkinnyCoffee / GrowthQuest</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Role</div>
+            <div class="meta-value">Creative Lead</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Scope</div>
+            <div class="meta-value">Team Workflow Design</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Impact</div>
+            <div class="meta-value">+40% Output Speed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stats-bar">
+      <div class="stats-bar-inner">
+        <div class="stat-item">
+          <div class="num">+40%</div>
+          <div class="lbl">Team Output Speed</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">−50%</div>
+          <div class="lbl">Ideation Phase Time</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">4</div>
+          <div class="lbl">AI Tools Integrated</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">2</div>
+          <div class="lbl">Junior Designers Trained</div>
+        </div>
+      </div>
+    </div>
+    <div class="project-content">
+      <div class="content-grid">
+        <div class="content-main fade-up">
+          <h2>The Challenge</h2>
+          <p>
+            Most design teams treat AI tools as a curiosity — something to
+            experiment with, not to build workflows around. When I joined
+            SkinnyCoffee as Creative Lead, the team was producing good work, but
+            slowly. Ideation was the bottleneck. Creative concepting and visual
+            exploration were consuming time that should have been spent on
+            execution quality.
+          </p>
+          <p>
+            The goal: integrate AI tools into the production workflow in a
+            structured way — not to replace design thinking, but to compress the
+            time between brief and first concept. Then train the team to use
+            them confidently and consistently.
+          </p>
+          <h2>The AI Workflow System</h2>
+          <div class="workflow-step">
+            <div class="ws-icon"><i class="bx bx-bulb"></i></div>
+            <div class="ws-content">
+              <h4>Phase 1 — Brief Deconstruction with ChatGPT-4o</h4>
+              <p>
+                Every brief goes through a structured ChatGPT-4o prompt
+                sequence: extract the core business goal, define the target
+                audience in precise terms, generate 5 visual direction
+                hypotheses, and identify the top 2 that would most likely
+                perform. This replaces a 90-minute team ideation session with a
+                focused 15-minute process.
+              </p>
+            </div>
+          </div>
+          <div class="workflow-step">
+            <div class="ws-icon"><i class="bx bx-image-alt"></i></div>
+            <div class="ws-content">
+              <h4>Phase 2 — Visual Exploration with Midjourney</h4>
+              <p>
+                Use the 2 chosen directions as Midjourney prompts to generate
+                8–12 visual concepts before opening Illustrator or Photoshop.
+                This gives the team and client a concrete reference point early,
+                reducing revision loops significantly.
+              </p>
+            </div>
+          </div>
+          <div class="workflow-step">
+            <div class="ws-icon"><i class="bx bx-edit-alt"></i></div>
+            <div class="ws-content">
+              <h4>Phase 3 — Execution in Adobe Suite / Figma</h4>
+              <p>
+                With a direction locked, execution happens in the traditional
+                tools. AI-generated concepts are never final deliverables —
+                they're starting points. The designer's craft is in the
+                execution, the refinement, and the on-brand adaptation.
+              </p>
+            </div>
+          </div>
+          <div class="workflow-step">
+            <div class="ws-icon"><i class="bx bx-check-shield"></i></div>
+            <div class="ws-content">
+              <h4>Phase 4 — Brand QA Gate</h4>
+              <p>
+                Every asset passes through a brand QA checklist before delivery.
+                AI tools can drift off-brand; the QA gate catches that before it
+                reaches the client. This step was non-negotiable when
+                introducing AI into the workflow.
+              </p>
+            </div>
+          </div>
+          <h2>Tools in the Stack</h2>
+          <div class="tools-highlight">
+            <div class="tool-highlight-card">
+              <div class="icon"><i class="bx bx-bot"></i></div>
+              <div class="name">ChatGPT-4o</div>
+              <div class="use">
+                Brief deconstruction, copy hooks, concept hypothesis
+              </div>
+            </div>
+            <div class="tool-highlight-card">
+              <div class="icon"><i class="bx bx-image"></i></div>
+              <div class="name">Midjourney</div>
+              <div class="use">
+                Visual direction exploration and concept generation
+              </div>
+            </div>
+            <div class="tool-highlight-card">
+              <div class="icon"><i class="bx bx-brush"></i></div>
+              <div class="name">Adobe Firefly</div>
+              <div class="use">
+                In-product generative fill and background replacement
+              </div>
+            </div>
+            <div class="tool-highlight-card">
+              <div class="icon"><i class="bx bx-images"></i></div>
+              <div class="name">ImageFX</div>
+              <div class="use">
+                Rapid asset variant generation for A/B testing
+              </div>
+            </div>
+          </div>
+          <h2>Training the Team</h2>
+          <p>
+            Introducing AI tools to junior designers required a careful
+            approach. The risk wasn't that they'd use them badly — it was that
+            they'd use them as a crutch and skip the strategic thinking that
+            makes a brief worth solving.
+          </p>
+          <p>
+            I designed a two-week onboarding programme: first week was prompt
+            engineering fundamentals and tool-specific sessions. Second week was
+            supervised practice on live briefs, with critique sessions focused
+            on understanding when AI output needed to be pushed further before
+            acceptance.
+          </p>
+          <h2>Results</h2>
+          <div class="results-grid">
+            <div class="result-card">
+              <div class="r-num">+40%</div>
+              <div class="r-label">Overall team output speed improvement</div>
+            </div>
+            <div class="result-card">
+              <div class="r-num">−50%</div>
+              <div class="r-label">
+                Time reduction in the ideation phase per project
+              </div>
+            </div>
+            <div class="result-card">
+              <div class="r-num">2</div>
+              <div class="r-label">
+                Junior designers trained and independently operating with AI
+                tools
+              </div>
+            </div>
+            <div class="result-card">
+              <div class="r-num">0</div>
+              <div class="r-label">
+                Drop in brand quality scores after AI workflow integration
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-sidebar">
+          <div class="sidebar-card">
+            <h3>Project Info</h3>
+            <div class="sidebar-item">
+              <span class="k">Context</span
+              ><span class="v">SkinnyCoffee / GrowthQuest</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="k">Role</span><span class="v">Creative Lead</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="k">Type</span><span class="v">Workflow Design</span>
+            </div>
+          </div>
+          <div class="sidebar-card">
+            <h3>Tools Integrated</h3>
+            <div class="tool-list">
+              <span class="tool-chip">Midjourney</span
+              ><span class="tool-chip">ChatGPT-4o</span
+              ><span class="tool-chip">Adobe Firefly</span
+              ><span class="tool-chip">ImageFX</span
+              ><span class="tool-chip">DALL·E</span
+              ><span class="tool-chip">Whisk</span>
+            </div>
+          </div>
+          <div class="sidebar-card">
+            <h3>Key Outcomes</h3>
+            <div class="sidebar-item">
+              <span class="k">Output Speed</span
+              ><span class="v" style="color: var(--accent)">+40%</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="k">Ideation Time</span
+              ><span class="v" style="color: var(--accent)">−50%</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="k">Brand Quality</span
+              ><span class="v" style="color: var(--accent)">Maintained</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="next-project">
+      <div class="next-inner">
+        <div>
+          <div class="next-label">Back to the Start</div>
+          <div class="next-title">SkinnyCoffee Superboost</div>
+          <a href="project-skinny-coffee.html" class="next-btn"
+            >View Case Study <i class="bx bx-right-arrow-alt"></i
+          ></a>
+        </div>
+        <a href="index.html#portfolio" class="all-work-btn"
+          ><i class="bx bx-grid-alt"></i> All Work</a
+        >
+      </div>
+    </div>
+    <script>
+      const cursor = document.getElementById("cursor"),
+        ring = document.getElementById("cursor-ring");
+      let mx = 0,
+        my = 0,
+        rx = 0,
+        ry = 0;
+      document.addEventListener("mousemove", (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        cursor.style.left = mx + "px";
+        cursor.style.top = my + "px";
+      });
+      (function a() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.left = rx + "px";
+        ring.style.top = ry + "px";
+        requestAnimationFrame(a);
+      })();
+      const obs = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          }),
+        { threshold: 0.1 },
+      );
+      document.querySelectorAll(".fade-up").forEach((el) => obs.observe(el));
+    </script>
+  </body>
+</html>
