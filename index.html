@@ -1,1056 +1,1492 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>S.A | Portfolio</title>
-    <!-- Bootstrap 5 CDN -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <!-- boxicons -->
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Stephen Ariyo — Senior Graphic Designer & Creative Lead</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #0C0C0C;
+    --bg2: #131313;
+    --bg3: #1A1A1A;
+    --border: #262626;
+    --text: #F0EDE6;
+    --text2: #888880;
+    --text3: #555550;
+    --accent: #FF5500;
+    --accent2: #FF7733;
+    --white: #F0EDE6;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    cursor: none;
+    overflow-x: hidden;
+  }
 
-    <!-- Devicon -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-    />
+  /* CURSOR */
+  .cursor {
+    position: fixed;
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease, width 0.3s, height 0.3s, opacity 0.3s;
+    opacity: 0.5;
+  }
+  body:hover .cursor { opacity: 1; }
 
-    <!-- custom css -->
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
-  <body>
-    <!-- cursor -->
-    <div class="cursor"></div>
+  /* TYPOGRAPHY */
+  h1, h2, h3, h4 { font-family: 'Syne', sans-serif; font-weight: 700; line-height: 1.1; }
+  a { text-decoration: none; color: inherit; }
 
-    <!-- header -->
-    <header class="">
-      <div class="container">
-        <div class="p-3 py-4 d-flex justify-content-between align-items-center">
-          <a href="#"
-            ><img src="./images/theKid.png" alt="theKid" width="150px"
-          /></a>
+  .section-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+  .section-desc {
+    color: var(--text2);
+    max-width: 520px;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
 
-          <i
-            class="bx bx-menu d-none"
-            id="menu-icon"
-            style="color: #1d1d1d"
-          ></i>
+  /* HEADER */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(12,12,12,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  header.scrolled { background: rgba(12,12,12,0.99); }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    letter-spacing: -0.02em;
+  }
+  .logo span { color: var(--accent); }
+  nav { display: flex; gap: 0.25rem; align-items: center; }
+  .nav-link {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text2);
+    padding: 0.5rem 0.9rem;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-link:hover, .nav-link.active { color: var(--text); background: var(--bg3); }
+  .nav-cta {
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.55rem 1.2rem;
+    border-radius: 4px;
+    margin-left: 0.5rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .nav-cta:hover { background: var(--accent2); transform: translateY(-1px); }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px; height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-          <nav class="d-flex justify-content-end m-0">
-            <a href="#home" class="my-nav-link active">HOME</a>
-            <a href="#service" class="my-nav-link">SERVICE</a>
-            <a href="#resume" class="my-nav-link">RESUME</a>
-            <a href="#portfolio" class="my-nav-link">PORTFOLIO</a>
-          </nav>
+  /* MOBILE NAV */
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: 1rem 2rem 1.5rem;
+    gap: 0.25rem;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav .nav-link {
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+  }
+  .mobile-nav .nav-cta {
+    margin-left: 0;
+    margin-top: 0.5rem;
+    text-align: center;
+    padding: 0.85rem;
+  }
+
+  /* HERO */
+  #home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 2rem 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-text {
+    position: absolute;
+    top: 50%;
+    right: -2rem;
+    transform: translateY(-50%);
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(8rem, 18vw, 18rem);
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,85,0,0.07);
+    pointer-events: none;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    user-select: none;
+  }
+  .hero-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-available {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,85,0,0.1);
+    border: 1px solid rgba(255,85,0,0.25);
+    border-radius: 100px;
+    padding: 6px 14px 6px 10px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--accent2);
+    margin-bottom: 1.5rem;
+    width: fit-content;
+  }
+  .hero-available .dot {
+    width: 7px; height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+  .hero-name {
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .hero-name .accent { color: var(--accent); }
+  .hero-role {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    color: var(--text2);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    min-height: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-role .role-text {
+    color: var(--text);
+    font-weight: 500;
+    position: relative;
+  }
+  .hero-role .role-text::after {
+    content: '|';
+    color: var(--accent);
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+  }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+  .hero-desc {
+    color: var(--text2);
+    font-size: 1rem;
+    line-height: 1.85;
+    max-width: 440px;
+    margin-bottom: 2rem;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.85rem 2rem;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.85rem 2rem;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    letter-spacing: 0.04em;
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-outline:hover { border-color: var(--accent); background: rgba(255,85,0,0.06); transform: translateY(-2px); }
+  .hero-socials { display: flex; gap: 1rem; align-items: center; }
+  .social-link {
+    width: 40px; height: 40px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text2);
+    font-size: 1.2rem;
+    transition: all 0.2s;
+  }
+  .social-link:hover { border-color: var(--accent); color: var(--accent); background: rgba(255,85,0,0.06); }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .stat-card {
+    background: var(--bg2);
+    padding: 1.75rem;
+    transition: background 0.2s;
+  }
+  .stat-card:hover { background: var(--bg3); }
+  .stat-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-number span { color: var(--accent); }
+  .stat-label {
+    font-size: 0.82rem;
+    color: var(--text2);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  /* SECTION WRAPPER */
+  section { padding: 100px 2rem; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-header { margin-bottom: 4rem; }
+
+  /* MARQUEE */
+  .marquee-section {
+    padding: 0;
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 3rem;
+    padding: 1.2rem 0;
+    animation: marquee 20s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+  }
+  .marquee-item {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text3);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .marquee-item::after {
+    content: '●';
+    color: var(--accent);
+    font-size: 0.5rem;
+  }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* SERVICES */
+  #service { background: var(--bg); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .service-card {
+    background: var(--bg2);
+    padding: 2.5rem 2rem;
+    transition: background 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--accent);
+    transition: height 0.35s ease;
+  }
+  .service-card:hover::before { height: 100%; }
+  .service-card:hover { background: var(--bg3); }
+  .service-icon {
+    width: 48px; height: 48px;
+    background: rgba(255,85,0,0.1);
+    border: 1px solid rgba(255,85,0,0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  .service-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+  .service-card p { font-size: 0.9rem; color: var(--text2); line-height: 1.75; }
+
+  /* ABOUT */
+  #about { background: var(--bg2); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .about-image-wrap {
+    position: relative;
+  }
+  .about-image-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    max-height: 520px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    color: var(--text3);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-image-placeholder::after {
+    content: 'SA';
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 5rem;
+    color: var(--border);
+    position: absolute;
+  }
+  .about-badge {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background: var(--accent);
+    color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+  }
+  .about-badge .big { display: block; font-size: 2rem; line-height: 1; }
+  .about-badge .small { font-size: 0.75rem; font-weight: 500; opacity: 0.9; }
+  .about-content h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); margin-bottom: 1.25rem; }
+  .about-content p { color: var(--text2); line-height: 1.85; margin-bottom: 1.25rem; }
+  .about-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+  .tool-tag {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.78rem;
+    color: var(--text2);
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  .tool-tag:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* RESUME */
+  #resume { background: var(--bg); }
+  .resume-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 3rem;
+  }
+  .resume-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    position: sticky;
+    top: 90px;
+    align-self: start;
+  }
+  .resume-tab {
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 0.85rem 1.25rem;
+    border-radius: 6px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text2);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid transparent;
+  }
+  .resume-tab i { font-size: 1.1rem; }
+  .resume-tab:hover { background: var(--bg2); color: var(--text); }
+  .resume-tab.active { background: var(--bg2); color: var(--text); border-color: var(--border); }
+  .resume-tab.active i { color: var(--accent); }
+  .resume-panel { display: none; }
+  .resume-panel.active { display: block; }
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 1px 1fr;
+    gap: 0 2rem;
+    position: relative;
+    padding-bottom: 2.5rem;
+  }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-line {
+    width: 1px;
+    background: var(--border);
+    position: relative;
+  }
+  .timeline-dot {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: 2px solid var(--bg);
+  }
+  .timeline-content {}
+  .timeline-date {
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+  }
+  .timeline-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+  .timeline-company {
+    font-size: 0.85rem;
+    color: var(--text2);
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+  }
+  .timeline-desc { font-size: 0.88rem; color: var(--text2); line-height: 1.75; }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .skill-group { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; }
+  .skill-group-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+  .skill-item { margin-bottom: 1rem; }
+  .skill-item:last-child { margin-bottom: 0; }
+  .skill-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+  .skill-name { font-size: 0.88rem; font-weight: 500; color: var(--text); }
+  .skill-level { font-size: 0.78rem; color: var(--text3); }
+  .skill-bar {
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .skill-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  /* PORTFOLIO */
+  #portfolio { background: var(--bg2); }
+  .portfolio-filters {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+  .filter-btn {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text2);
+    padding: 0.5rem 1.1rem;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover { border-color: var(--accent); color: var(--text); }
+  .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+  .project-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255,85,0,0.4);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+  .project-thumb {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 3rem;
+    letter-spacing: -0.03em;
+  }
+  .project-thumb .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .project-card:hover .overlay { opacity: 1; }
+  .overlay-icon { font-size: 2rem; color: #fff; }
+  .project-info { padding: 1.5rem; }
+  .project-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+  .project-tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    background: rgba(255,85,0,0.1);
+    color: var(--accent);
+    border: 1px solid rgba(255,85,0,0.2);
+  }
+  .project-info h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .project-info p { font-size: 0.88rem; color: var(--text2); line-height: 1.7; margin-bottom: 1rem; }
+  .project-metric {
+    font-size: 0.82rem;
+    color: var(--accent);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* CONTACT */
+  #contact { background: var(--bg); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .contact-info h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); margin-bottom: 1.25rem; }
+  .contact-info p { color: var(--text2); line-height: 1.85; margin-bottom: 2rem; }
+  .contact-items { display: flex; flex-direction: column; gap: 1.25rem; }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .contact-icon {
+    width: 44px; height: 44px;
+    background: rgba(255,85,0,0.1);
+    border: 1px solid rgba(255,85,0,0.2);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent);
+    font-size: 1.15rem;
+    flex-shrink: 0;
+  }
+  .contact-item-text { font-size: 0.88rem; color: var(--text2); }
+  .contact-item-text strong { display: block; color: var(--text); font-weight: 500; margin-bottom: 0.1rem; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-label { font-size: 0.8rem; font-weight: 500; color: var(--text2); letter-spacing: 0.05em; }
+  .form-input, .form-textarea {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.85rem 1rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    transition: border-color 0.2s;
+    outline: none;
+    width: 100%;
+    resize: none;
+  }
+  .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
+  .form-textarea { height: 130px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .submit-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 0.95rem;
+    border-radius: 6px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .submit-btn:hover { background: var(--accent2); transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: 2.5rem 2rem;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .footer-copy { font-size: 0.82rem; color: var(--text3); }
+  .footer-copy span { color: var(--accent); }
+  .footer-socials { display: flex; gap: 0.75rem; }
+
+  /* FADE IN */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 992px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-bg-text { display: none; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-image-wrap { max-width: 400px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .resume-layout { grid-template-columns: 1fr; }
+    .resume-tabs { flex-direction: row; flex-wrap: wrap; position: static; }
+    .resume-tab { font-size: 0.82rem; padding: 0.6rem 1rem; }
+  }
+  @media (max-width: 768px) {
+    nav { display: none; }
+    .hamburger { display: flex; }
+    section { padding: 70px 1.25rem; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .hero-btns { flex-direction: column; }
+    .btn-primary, .btn-outline { justify-content: center; }
+    .form-row { grid-template-columns: 1fr; }
+    .stat-number { font-size: 2rem; }
+    .about-badge { right: 0; bottom: -15px; }
+  }
+  @media (max-width: 480px) {
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .stat-card { padding: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="header-inner">
+    <a href="#home" class="logo">S<span>.</span>Ariyo</a>
+    <nav>
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#service" class="nav-link">Services</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#resume" class="nav-link">Resume</a>
+      <a href="#portfolio" class="nav-link">Work</a>
+      <a href="#contact" class="nav-cta">Hire Me</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#home" class="nav-link">Home</a>
+    <a href="#service" class="nav-link">Services</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#resume" class="nav-link">Resume</a>
+    <a href="#portfolio" class="nav-link">Work</a>
+    <a href="#contact" class="nav-cta">Hire Me</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg-text">DESIGN</div>
+  <div class="hero-grid">
+    <div class="hero-content fade-up">
+      <div class="hero-available">
+        <div class="dot"></div>
+        Available for new projects
+      </div>
+      <h1 class="hero-name">Stephen<br><span class="accent">O. Ariyo</span></h1>
+      <div class="hero-role">
+        I am a&nbsp;<span class="role-text" id="role-text">Graphic Designer</span>
+      </div>
+      <p class="hero-desc">
+        Senior Graphic Designer & Creative Lead with 5+ years delivering brand identities, Meta ad creatives, AI-generated visuals, and high-converting funnels across global remote roles.
+      </p>
+      <div class="hero-btns">
+        <a href="#portfolio" class="btn-primary">
+          <i class="bx bx-grid-alt"></i> View My Work
+        </a>
+        <a href="mailto:ariyostephen2004@gmail.com" class="btn-outline">
+          <i class="bx bx-envelope"></i> Get in Touch
+        </a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://www.linkedin.com/in/stephen-ariyo-6750052b0" target="_blank" class="social-link"><i class="bx bxl-linkedin"></i></a>
+        <a href="https://github.com/HBKtheKid" target="_blank" class="social-link"><i class="bx bxl-github"></i></a>
+        <a href="mailto:ariyostephen2004@gmail.com" class="social-link"><i class="bx bx-envelope"></i></a>
+        <a href="https://stephenariyo.framer.website/" target="_blank" class="social-link"><i class="bx bx-link-external"></i></a>
+      </div>
+    </div>
+    <div class="hero-stats fade-up" style="transition-delay:0.2s">
+      <div class="stat-card">
+        <div class="stat-number">5<span>+</span></div>
+        <div class="stat-label">Years of<br>Professional Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">10<span>+</span></div>
+        <div class="stat-label">Simultaneous<br>Client Projects</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">60<span>%</span></div>
+        <div class="stat-label">Conversion Rate<br>Improvement</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">150<span>%</span></div>
+        <div class="stat-label">Ad Creative<br>Output Boost</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track" id="marquee-track">
+    <div class="marquee-item">Brand Identity</div>
+    <div class="marquee-item">Meta Ad Creatives</div>
+    <div class="marquee-item">UI/UX Design</div>
+    <div class="marquee-item">AI-Generated Visuals</div>
+    <div class="marquee-item">Motion Graphics</div>
+    <div class="marquee-item">Email Design</div>
+    <div class="marquee-item">Amazon Storefronts</div>
+    <div class="marquee-item">Landing Pages</div>
+    <div class="marquee-item">Social Media</div>
+    <div class="marquee-item">Team Leadership</div>
+    <div class="marquee-item">Brand Identity</div>
+    <div class="marquee-item">Meta Ad Creatives</div>
+    <div class="marquee-item">UI/UX Design</div>
+    <div class="marquee-item">AI-Generated Visuals</div>
+    <div class="marquee-item">Motion Graphics</div>
+    <div class="marquee-item">Email Design</div>
+    <div class="marquee-item">Amazon Storefronts</div>
+    <div class="marquee-item">Landing Pages</div>
+    <div class="marquee-item">Social Media</div>
+    <div class="marquee-item">Team Leadership</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="service">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label">What I Do</span>
+      <h2 class="section-title">Services</h2>
+      <p class="section-desc">From brand strategy to pixel-perfect execution — I design with purpose and measure results.</p>
+    </div>
+    <div class="services-grid fade-up">
+      <div class="service-card">
+        <div class="service-icon"><i class="bx bxs-paint"></i></div>
+        <h3>Brand Identity</h3>
+        <p>Full visual identity systems — logos, typography, color strategy, guidelines — built to last and designed to convert.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="bx bx-trending-up"></i></div>
+        <h3>Ad Creatives & Funnels</h3>
+        <p>High-converting Meta ad creatives, landing pages, and funnel designs validated with senior media buyers and backed by data.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="bx bx-palette"></i></div>
+        <h3>UI/UX Design</h3>
+        <p>Figma-first, user-centred interface design. From wireframes to high-fidelity prototypes that are ready for development.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="bx bx-film"></i></div>
+        <h3>Motion & Video</h3>
+        <p>AI-generated videos, animated social assets, and short-form edits using After Effects, Premiere Pro, and CapCut.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="bx bx-store"></i></div>
+        <h3>E-commerce Design</h3>
+        <p>Amazon storefronts, A+ content, Shopify pages, and Klaviyo email campaigns that improve discoverability and on-page conversion.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="bx bx-bot"></i></div>
+        <h3>AI-Assisted Design</h3>
+        <p>Integrating Midjourney, DALL·E, ChatGPT-4o, and ImageFX into design workflows to increase output quality and speed by 40%.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrap fade-up">
+        <div class="about-image-placeholder"></div>
+        <div class="about-badge">
+          <span class="big">5+</span>
+          <span class="small">Years Experience</span>
         </div>
       </div>
-    </header>
-    <!-- bars background -->
-
-    <!-- home section -->
-    <section class="home" id="home">
-      <div class="home-detail text-center">
-        <h1 class="d-none d-lg-block">Stephen O. Ariyo</h1>
-        <h1 class="d-lg-none">Stephen Ariyo</h1>
-        <h2>
-          I am a
-          <span style="--i: 4" data-text="Graphic Designer"
-            >Graphic Designer</span
-          >
-          <span style="--i: 3" data-text="UI/UX Designer">UI/UX Designer</span>
-
-          <span style="--i: 2" data-text="Frontend Dev">Frontend Dev</span>
-          <span style="--i: 1" data-text="Software Engineer"
-            >Software Engineer</span
-          >
-        </h2>
+      <div class="about-content fade-up" style="transition-delay:0.15s">
+        <span class="section-label">About Me</span>
+        <h2>Creative Lead who thinks in systems, not styles.</h2>
         <p>
-          I’m Stephen Ariyo is an graphic / UIUX designer & frontend developer
-          Based in Nigeria / working remotely worldwide.
+          I'm Stephen Ariyo — a Senior Graphic Designer and Creative Lead based in Lagos, Nigeria, working remotely with global clients. I've spent 5+ years at the intersection of brand strategy, visual design, and AI-assisted creative production.
         </p>
-        <div
-          class="sci d-lg-flex d-block justify-content-center align-items-center gap-3 mt-3 mt-lg-0"
-        >
-          <div class="group d-flex gap-3 justify-content-center mt-2 mt-lg-0">
-            <a href=""><i class="bx bxl-github socials"></i></a>
-            <a href="https://www.linkedin.com/in/StephenAriyo/" target="new"
-              ><i class="bx bxl-linkedin-square socials"></i
-            ></a>
-            <a href="mailto:ariyostephen2004@gmail.com"
-              ><i class="bx bxs-envelope socials"></i
-            ></a>
-          </div>
-        </div>
-
-        <img src="./images/hbk.png" alt="" class="hbk-main" />
-      </div>
-    </section>
-    <!-- services section -->
-    <section class="services" id="service">
-      <h2 class="heading">My Services</h2>
-      <div class="container p-0">
-        <div class="services-container row col">
-          <div class="col-12 col-lg-4 p-2">
-            <div class="services-box">
-              <div class="icon d-flex justify-content-between">
-                <i class="bx bx-code-alt" style="color: #1d1d1d"></i>
-              </div>
-              <h3>Web Development</h3>
-              <p>
-                I develop websites and webpages for Clients. Proficiency in
-                frontend development
-              </p>
-            </div>
-          </div>
-
-          <div class="col-12 col-lg-4 p-2">
-            <div class="services-box">
-              <div class="icon d-flex justify-content-between">
-                <i class="bx bx-pen" style="color: #1d1d1d"></i>
-              </div>
-              <h3>Graphic Designing</h3>
-              <p>
-                I and a skilled graphic designer with certification in Adobe
-                Creative Suites
-              </p>
-            </div>
-          </div>
-
-          <div class="col-12 col-lg-4 p-2">
-            <div class="services-box">
-              <div class="icon d-flex justify-content-between">
-                <i class="bx bxs-paint" style="color: #1d1d1d"></i>
-              </div>
-              <h3>Branding</h3>
-              <p>
-                I am a brand designer and developer, i develop brand identities
-                for clients
-              </p>
-            </div>
-          </div>
-
-          <div class="col-12 col-lg-4 p-2">
-            <div class="services-box">
-              <div class="icon d-flex justify-content-between">
-                <i class="bx bx-palette" style="color: #1d1d1d"></i>
-              </div>
-              <h3>UI/UX Designer</h3>
-              <p>
-                I am a User Interface and Experience designer with proficiency
-                in figma
-              </p>
-            </div>
-          </div>
-
-          <!-- <div class="col-12 col-lg-4 p-2">
-            <div class="services-box">
-              <div class="icon d-flex justify-content-between">
-                <i class="bx bx-cog" style="color: #1d1d1d"></i>
-              </div>
-              <h3>Requirement Engineering</h3>
-              <p>
-                With a background in software Engineering
-              </p>
-            </div>
-          </div> -->
-
-          <div class="col-12 col-lg-4 p-2">
-            <div class="services-box">
-              <div class="icon d-flex justify-content-between">
-                <i class="bx bx-pie-chart-alt-2" style="color: #1d1d1d"></i>
-              </div>
-              <h3>Social Media Management</h3>
-              <p>
-                I manage social media accounts for clients, increasing their
-                engagements and presence
-              </p>
-            </div>
-          </div>
+        <p>
+          My work spans brand identities for fashion labels, Meta ad campaigns that drove measurable revenue growth, Amazon storefronts for e-commerce brands, and email funnels built in Klaviyo. I've led junior design teams, established workflows, and integrated AI tools before most agencies knew what Midjourney was.
+        </p>
+        <p>
+          I don't just make things look good — I connect design to business outcomes. Every brief starts with a business question, not a colour palette.
+        </p>
+        <div class="about-tools">
+          <span class="tool-tag">Adobe Illustrator</span>
+          <span class="tool-tag">Photoshop</span>
+          <span class="tool-tag">InDesign</span>
+          <span class="tool-tag">After Effects</span>
+          <span class="tool-tag">Figma</span>
+          <span class="tool-tag">Framer</span>
+          <span class="tool-tag">Midjourney</span>
+          <span class="tool-tag">DALL·E</span>
+          <span class="tool-tag">ChatGPT-4o</span>
+          <span class="tool-tag">ImageFX</span>
+          <span class="tool-tag">Shopify</span>
+          <span class="tool-tag">Klaviyo</span>
+          <span class="tool-tag">Canva</span>
+          <span class="tool-tag">Premiere Pro</span>
         </div>
       </div>
-    </section>
-    <!-- resume section -->
-    <section class="resume" id="resume">
-      <div class="container">
-        <!-- for wide screen -->
-        <div class="row col d-none d-lg-flex">
-          <div class="col-12 col-lg-4">
-            <div class="resume-box">
-              <h2>Why Hire Me?</h2>
-              <p class="desc">
-                I'm a problem-solver, a creative thinker, and a team player. I'm
-                passionate about delivering quality and I'm always looking for
-                new challenges.
-              </p>
-              <button class="resume-button active">Experience</button>
-              <button class="resume-button">Education</button>
-              <button class="resume-button">Skills</button>
-              <button class="resume-button">About Me</button>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label">Background</span>
+      <h2 class="section-title">Resume</h2>
+      <p class="section-desc">A track record of delivering creative work that moves the needle.</p>
+    </div>
+    <div class="resume-layout fade-up">
+      <div class="resume-tabs">
+        <button class="resume-tab active" data-tab="experience"><i class="bx bx-briefcase"></i> Experience</button>
+        <button class="resume-tab" data-tab="education"><i class="bx bx-book-open"></i> Education</button>
+        <button class="resume-tab" data-tab="skills"><i class="bx bx-code-alt"></i> Skills</button>
+      </div>
+      <div class="resume-content">
+
+        <!-- Experience -->
+        <div class="resume-panel active" id="panel-experience">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-line"><div class="timeline-dot"></div></div>
+              <div class="timeline-content">
+                <div class="timeline-date">Aug 2025 – Present</div>
+                <div class="timeline-title">Graphic Designer & Video Editor</div>
+                <div class="timeline-company">GrowthQuest — Remote</div>
+                <div class="timeline-desc">Serving 10+ clients simultaneously across e-commerce, SaaS, and high-ticket sectors. Delivering 50+ ad creatives and branded assets per month. Built full brand identities and landing pages for 5+ local businesses from the ground up, growing the client roster by 40% within the first six months through repeat referrals.</div>
+              </div>
             </div>
-          </div>
-          <div class="col-12 col-lg-8">
-            <div class="resume-box ps-1">
-              <div class="resume-detail active experience">
-                <h2 class="heading">My Experience</h2>
-                <p class="desc">
-                  With a proven track record, I've consistently exceeded
-                  expectations in my various roles and I'm committed to
-                  delivering innovative solutions and driving positive change.
-                </p>
-                <div class="resume-list">
-                  <div class="resume-item">
-                    <p class="year">Oct 2024 - Present (Part-time)</p>
-                    <h3>Graphic Designer / Community Manager</h3>
-                    <p class="company">Phantom</p>
-                    <p></p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">2024 - Present (Contract)</p>
-                    <h3>Graphic Designer</h3>
-                    <p class="company">FX Mod</p>
-                    <p></p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">2024</p>
-                    <h3>Frontend Development Student Intern</h3>
-                    <p class="company">ALX Africa</p>
-                    <p></p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Jan 2024 (Contract)</p>
-                    <h3>Frontend Developer</h3>
-                    <p class="company">Educator's Hub</p>
-                    <p></p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Dec 2023 (Contract)</p>
-                    <h3>Snr Frontend Developer</h3>
-                    <p class="company">Wild Fashon Inc.</p>
-                    <p></p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Dec 2023 - Present</p>
-                    <h3>Graphic Designer / Social Media Manager</h3>
-                    <p class="company">Wild Fashion Inc</p>
-                    <p></p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">2022 - Present</p>
-                    <h3>Graphic Designer / Social Media Manager</h3>
-                    <p class="company">TheWholeBakery Trading</p>
-                    <p></p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Feb 2022 - Nov 2022</p>
-                    <h3>Frontend Development Intern</h3>
-                    <p class="company">Techy Jaunt</p>
-                    <p></p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">May 2021 - Nov 2021</p>
-                    <h3>Graphic Design Intern</h3>
-                    <p class="company">Early Bells Design Institute</p>
-                    <p></p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Jun 2020 - Sept 2021</p>
-                    <h3>Graphic Designer</h3>
-                    <p class="company">KiaKia Exchange</p>
-                    <p></p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Jun 2020 - Sept 2021</p>
-                    <h3>Frontend Developer</h3>
-                    <p class="company">KiaKia Exchange</p>
-                    <p></p>
-                  </div>
-                </div>
+            <div class="timeline-item">
+              <div class="timeline-line"><div class="timeline-dot"></div></div>
+              <div class="timeline-content">
+                <div class="timeline-date">Feb 2024 – Aug 2025</div>
+                <div class="timeline-title">Senior Graphic Designer / Creative Lead</div>
+                <div class="timeline-company">SkinnyCoffee Superboost LLC — Kennesaw, GA (Remote)</div>
+                <div class="timeline-desc">Set brand standards and creative direction across all digital channels. Boosted ad creative output by 150%, drove a 60% increase in conversion rates on Meta campaigns. Owned end-to-end email (Klaviyo), funnel, and Amazon A+ content. Mentored junior designers, improving team output speed by 40% through AI tool integration.</div>
               </div>
-
-              <div class="resume-detail education">
-                <h2 class="heading">My Education</h2>
-                <p class="desc">
-                  Through rigorous coursework and hands-on experiences, I've
-                  developed a strong foundation in my various fields. Here is an
-                  overview of my education background.
-                </p>
-                <div class="resume-list">
-                  <div class="resume-item">
-                    <p class="year">Ongoing</p>
-                    <h3>B.tech Software Engineering</h3>
-                    <p class="company">Federal Universiy of Tech Akure</p>
-                    <p>Bachelor of Engineering</p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Oct 2024</p>
-                    <h3>AI Career Essentials</h3>
-                    <p class="company">ALX Africa</p>
-                    <p>AI Proficiency Certification</p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Sept 2024</p>
-                    <h3>Graphic Designing Bootcamp</h3>
-                    <p class="company">Adobe Master Class</p>
-                    <p>Adobe Creative Suites Proficiency certificate</p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Mar 2024</p>
-                    <h3>Advanced JavaScript Programming</h3>
-                    <p class="company">Udemy</p>
-                    <p>JavaScript Program Completion Certificate</p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Oct 2023</p>
-                    <h3>Graphic Design and Digital Art Major</h3>
-                    <p class="company">Mozart Academy of Digital Art</p>
-                    <p>Bachelor of Art</p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Dec 2023</p>
-                    <h3>MERN Stack Certification</h3>
-                    <p class="company">Udemy</p>
-                    <p>Certificate of Completion</p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Apr 2023</p>
-                    <h3>Software Engineering</h3>
-                    <p class="company">ALX Africa</p>
-                    <p>Frontend Development Certificate</p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Oct 2023</p>
-                    <h3>Frontend Web Development(Udemy)</h3>
-                    <p class="company">Dr Anjela Yu</p>
-                    <p>Certificate of Completion</p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">April 2021</p>
-                    <h3>Adobe Creative Suites Certification</h3>
-                    <p class="company">Early Bells Design Institute</p>
-                    <p>Figma , Adobe Creative Suites Certification</p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Nov 2020</p>
-                    <h3>Graphic Design Essentials</h3>
-                    <p class="company">FOX Creatives</p>
-                    <p>Certificate of Completion</p>
-                  </div>
-                </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-line"><div class="timeline-dot"></div></div>
+              <div class="timeline-content">
+                <div class="timeline-date">Dec 2023 – Mar 2025</div>
+                <div class="timeline-title">Senior Graphic Designer (Creative Lead)</div>
+                <div class="timeline-company">Wild Fashion — Contract, Remote</div>
+                <div class="timeline-desc">Built full brand identity from scratch, increasing customer recognition by 30%. Directed apparel graphics, lookbooks, and packaging for streetwear collections. Led AI-assisted content strategy using ChatGPT-4o and Whisk, improving engagement consistency across launches.</div>
               </div>
-
-              <div class="resume-detail skills">
-                <h2 class="heading">My Skills</h2>
-                <p class="desc">
-                  I combine creativity and functionality to craft impactful,
-                  user-friendly designs that align with unique needs. Here’s an
-                  overview of my skills.
-                </p>
-                <div class="resume-list">
-                  <div class="resume-item">
-                    <i class="bx bxl-html5"></i>
-                    <span>HTML</span>
-                  </div>
-
-                  <div class="resume-item">
-                    <i class="bx bxl-css3"></i>
-                    <span>CSS</span>
-                  </div>
-
-                  <div class="resume-item">
-                    <i class="bx bxl-javascript"></i>
-                    <span>JS</span>
-                  </div>
-
-                  <div class="resume-item">
-                    <i class="bx bxl-react"></i>
-                    <span>REACT</span>
-                  </div>
-
-                  <div class="resume-item">
-                    <i class="bx bxl-adobe"></i>
-                    <span class="pt-2 text-center"
-                      >ADOBE CREATIVE SUITES: Photoshop, Illustrator, In Design,
-                      Premier Pro</span
-                    >
-                  </div>
-
-                  <div class="resume-item">
-                    <i class="bx bxl-figma"></i>
-                    <span>FIGMA</span>
-                  </div>
-
-                  <div class="resume-item">
-                    <i class="bx bxl-tailwind-css"></i>
-                    <span>TAILWIND CSS</span>
-                  </div>
-
-                  <div class="resume-item">
-                    <i class="bx bxl-bootstrap"></i>
-                    <span>BOOTSTRAP CSS</span>
-                  </div>
-                </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-line"><div class="timeline-dot"></div></div>
+              <div class="timeline-content">
+                <div class="timeline-date">Mar 2022 – Jan 2025</div>
+                <div class="timeline-title">Graphic Designer / Brand Strategist</div>
+                <div class="timeline-company">The Whole Bakery Trading — Contract, Remote</div>
+                <div class="timeline-desc">Built and managed the brand's full visual identity, growing social engagement by 40%. Translated complex Gen Z forex financial messaging into accessible, high-performing visual content as the sole creative decision-maker.</div>
               </div>
-              <!-- About me section not completed...Please Complete -->
-              <div class="resume-detail about-me">
-                <h2 class="heading">About Me</h2>
-                <p class="desc"></p>
-                <div class="resume-list">
-                  <div class="resume-item">
-                    <p>Name: Stephen Ariyo</p>
-                  </div>
-                </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-line"><div class="timeline-dot"></div></div>
+              <div class="timeline-content">
+                <div class="timeline-date">Jun 2023 – Oct 2024</div>
+                <div class="timeline-title">Graphic Designer / Creative</div>
+                <div class="timeline-company">The 17th Century — Contract, Remote</div>
+                <div class="timeline-desc">Led creative execution for fashion and lifestyle campaigns, improving brand visibility by 25% and audience engagement by 30%. Produced and directed short-form video edits and animated assets.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-line"><div class="timeline-dot"></div></div>
+              <div class="timeline-content">
+                <div class="timeline-date">May 2020 – Nov 2020</div>
+                <div class="timeline-title">Graphic Design Intern</div>
+                <div class="timeline-company">Early Bells Design Institute — Ikeja, Lagos</div>
+                <div class="timeline-desc">Supported senior designers on 20+ branding and digital design projects. Designed social media visuals that increased engagement by 15%.</div>
               </div>
             </div>
           </div>
         </div>
-        <!-- for mobile NB:Changes are to be made later-->
-        <div class="row col d-flex d-lg-none">
-          <div class="col-12">
-            <div class="resume-box ps-1">
-              <div class="resume-detail active experience">
-                <h2 class="heading">My Experience</h2>
-                <p class="desc">
-                  With a proven track record, I've consistently exceeded
-                  expectations in my various roles and I'm committed to
-                  delivering innovative solutions and driving positive change.
-                </p>
-                <div class="resume-list">
-                  <div class="resume-item">
-                    <p class="year">Oct 2024 - Present (Part-time)</p>
-                    <h3>Graphic Designer / Community Manager</h3>
-                    <p class="company">Phantom</p>
-                    <p></p>
-                  </div>
 
-                  <div class="resume-item">
-                    <p class="year">2024 - Present (Contract)</p>
-                    <h3>Graphic Designer</h3>
-                    <p class="company">FX Mod</p>
-                    <p></p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">2024</p>
-                    <h3>Frontend Development Student Intern</h3>
-                    <p class="company">ALX Africa</p>
-                    <p></p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Jan 2024 (Contract)</p>
-                    <h3>Frontend Developer</h3>
-                    <p class="company">Educator's Hub</p>
-                    <p></p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Dec 2023 (Contract)</p>
-                    <h3>Snr Frontend Developer</h3>
-                    <p class="company">Wild Fashon Inc.</p>
-                    <p></p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Dec 2023 - Present</p>
-                    <h3>Graphic Designer / Social Media Manager</h3>
-                    <p class="company">Wild Fashion Inc</p>
-                    <p></p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">2022 - Present</p>
-                    <h3>Graphic Designer / Social Media Manager</h3>
-                    <p class="company">TheWholeBakery Trading</p>
-                    <p></p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Feb 2022 - Nov 2022</p>
-                    <h3>Frontend Development Intern</h3>
-                    <p class="company">Techy Jaunt</p>
-                    <p></p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">May 2021 - Nov 2021</p>
-                    <h3>Graphic Design Intern</h3>
-                    <p class="company">Early Bells Design Institute</p>
-                    <p></p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Jun 2020 - Sept 2021</p>
-                    <h3>Graphic Designer</h3>
-                    <p class="company">KiaKia Exchange</p>
-                    <p></p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Jun 2020 - Sept 2021</p>
-                    <h3>Frontend Developer</h3>
-                    <p class="company">KiaKia Exchange</p>
-                    <p></p>
-                  </div>
-                </div>
+        <!-- Education -->
+        <div class="resume-panel" id="panel-education">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-line"><div class="timeline-dot"></div></div>
+              <div class="timeline-content">
+                <div class="timeline-date">Sept 2024</div>
+                <div class="timeline-title">Certification in UI, Graphic Design & Brand Identity</div>
+                <div class="timeline-company">Adobe Master Class — Ikeja, Lagos</div>
+                <div class="timeline-desc">Advanced proficiency in Adobe Creative Suite tools, UI fundamentals, and brand identity systems.</div>
               </div>
-
-              <div class="resume-detail education active mt-4">
-                <h2 class="heading">My Education</h2>
-                <p class="desc">
-                  Through rigorous coursework and hands-on experiences, I've
-                  developed a strong foundation in my various fields. Here is an
-                  overview of my education background.
-                </p>
-                <div class="resume-list">
-                  <div class="resume-item">
-                    <p class="year">Ongoing</p>
-                    <h3>B.tech Software Engineering</h3>
-                    <p class="company">Federal Universiy of Tech Akure</p>
-                    <p>Bachelor of Engineering</p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Oct 2024</p>
-                    <h3>AI Career Essentials</h3>
-                    <p class="company">ALX Africa</p>
-                    <p>AI Proficiency Certification</p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Sept 2024</p>
-                    <h3>Graphic Designing Bootcamp</h3>
-                    <p class="company">Adobe Master Class</p>
-                    <p>Adobe Creative Suites Proficiency certificate</p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Mar 2024</p>
-                    <h3>Advanced JavaScript Programming</h3>
-                    <p class="company">Udemy</p>
-                    <p>JavaScript Program Completion Certificate</p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Oct 2023</p>
-                    <h3>Graphic Design and Digital Art Major</h3>
-                    <p class="company">Mozart Academy of Digital Art</p>
-                    <p>Bachelor of Art</p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Dec 2023</p>
-                    <h3>MERN Stack Certification</h3>
-                    <p class="company">Udemy</p>
-                    <p>Certificate of Completion</p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Apr 2023</p>
-                    <h3>Software Engineering</h3>
-                    <p class="company">ALX Africa</p>
-                    <p>Frontend Development Certificate</p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Oct 2023</p>
-                    <h3>Frontend Web Development(Udemy)</h3>
-                    <p class="company">Dr Anjela Yu</p>
-                    <p>Certificate of Completion</p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">April 2021</p>
-                    <h3>Adobe Creative Suites Certification</h3>
-                    <p class="company">Early Bells Design Institute</p>
-                    <p>Figma , Adobe Creative Suites Certification</p>
-                  </div>
-
-                  <div class="resume-item">
-                    <p class="year">Nov 2020</p>
-                    <h3>Graphic Design Essentials</h3>
-                    <p class="company">FOX Creatives</p>
-                    <p>Certificate of Completion</p>
-                  </div>
-                </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-line"><div class="timeline-dot"></div></div>
+              <div class="timeline-content">
+                <div class="timeline-date">Oct 2023</div>
+                <div class="timeline-title">Diploma in Graphic Design (BA-equivalent)</div>
+                <div class="timeline-company">Mozart Academy of Digital Art — Ikeja, Lagos</div>
+                <div class="timeline-desc">Comprehensive programme covering graphic design, digital art, typography, and brand identity.</div>
               </div>
-
-              <div class="resume-detail skills active mt-4">
-                <h2 class="heading">My Skills</h2>
-                <p class="desc">
-                  I combine creativity and functionality to craft impactful,
-                  user-friendly designs that align with unique needs. Here’s an
-                  overview of my skills.
-                </p>
-                <div class="resume-list">
-                  <div class="resume-item">
-                    <i class="bx bxl-html5"></i>
-                    <span>HTML</span>
-                  </div>
-
-                  <div class="resume-item">
-                    <i class="bx bxl-css3"></i>
-                    <span>CSS</span>
-                  </div>
-
-                  <div class="resume-item">
-                    <i class="bx bxl-javascript"></i>
-                    <span>JS</span>
-                  </div>
-
-                  <div class="resume-item">
-                    <i class="bx bxl-react"></i>
-                    <span>REACT</span>
-                  </div>
-
-                  <div class="resume-item">
-                    <i class="bx bxl-adobe"></i>
-                    <span class="pt-2 text-center"
-                      >ADOBE CREATIVE SUITES: Photoshop, Illustrator, In Design,
-                      Premier Pro</span
-                    >
-                  </div>
-
-                  <div class="resume-item">
-                    <i class="bx bxl-figma"></i>
-                    <span>FIGMA</span>
-                  </div>
-
-                  <div class="resume-item">
-                    <i class="bx bxl-tailwind-css"></i>
-                    <span>TAILWIND CSS</span>
-                  </div>
-
-                  <div class="resume-item">
-                    <i class="bx bxl-bootstrap"></i>
-                    <span>BOOTSTRAP CSS</span>
-                  </div>
-                </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-line"><div class="timeline-dot"></div></div>
+              <div class="timeline-content">
+                <div class="timeline-date">Oct 2024</div>
+                <div class="timeline-title">AI Career Essentials</div>
+                <div class="timeline-company">ALX Africa</div>
+                <div class="timeline-desc">AI proficiency certification covering practical AI tools and integration into creative workflows.</div>
               </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-line"><div class="timeline-dot"></div></div>
+              <div class="timeline-content">
+                <div class="timeline-date">Apr 2021</div>
+                <div class="timeline-title">Adobe Creative Suite Certification</div>
+                <div class="timeline-company">Early Bells Design Institute — Ikeja, Lagos</div>
+                <div class="timeline-desc">Certification in Figma and full Adobe Creative Suite including Photoshop, Illustrator, and InDesign.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-line"><div class="timeline-dot"></div></div>
+              <div class="timeline-content">
+                <div class="timeline-date">Nov 2019</div>
+                <div class="timeline-title">Graphic Design Certification</div>
+                <div class="timeline-company">FOX Creatives — Remote</div>
+                <div class="timeline-desc">Foundational graphic design principles and tools.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="resume-panel" id="panel-skills">
+          <div class="skills-grid">
+            <div class="skill-group">
+              <div class="skill-group-title">Design Software</div>
+              <div class="skill-item"><div class="skill-row"><span class="skill-name">Adobe Illustrator</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="96"></div></div></div>
+              <div class="skill-item"><div class="skill-row"><span class="skill-name">Photoshop</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
+              <div class="skill-item"><div class="skill-row"><span class="skill-name">InDesign</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
+              <div class="skill-item"><div class="skill-row"><span class="skill-name">After Effects</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
+              <div class="skill-item"><div class="skill-row"><span class="skill-name">Premiere Pro</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="84"></div></div></div>
+            </div>
+            <div class="skill-group">
+              <div class="skill-group-title">UI & Prototyping</div>
+              <div class="skill-item"><div class="skill-row"><span class="skill-name">Figma</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
+              <div class="skill-item"><div class="skill-row"><span class="skill-name">Framer</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div></div>
+              <div class="skill-item"><div class="skill-row"><span class="skill-name">Canva</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="97"></div></div></div>
+              <div class="skill-item"><div class="skill-row"><span class="skill-name">HTML/CSS</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill" data-width="72"></div></div></div>
+            </div>
+            <div class="skill-group">
+              <div class="skill-group-title">AI Design Tools</div>
+              <div class="skill-item"><div class="skill-row"><span class="skill-name">Midjourney</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="93"></div></div></div>
+              <div class="skill-item"><div class="skill-row"><span class="skill-name">ChatGPT-4o</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
+              <div class="skill-item"><div class="skill-row"><span class="skill-name">DALL·E / ImageFX</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
+              <div class="skill-item"><div class="skill-row"><span class="skill-name">Adobe Firefly</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="84"></div></div></div>
+            </div>
+            <div class="skill-group">
+              <div class="skill-group-title">Platforms & Marketing</div>
+              <div class="skill-item"><div class="skill-row"><span class="skill-name">Meta Ads Manager</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="86"></div></div></div>
+              <div class="skill-item"><div class="skill-row"><span class="skill-name">Klaviyo</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill" data-width="78"></div></div></div>
+              <div class="skill-item"><div class="skill-row"><span class="skill-name">Shopify / Replo</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill" data-width="76"></div></div></div>
+              <div class="skill-item"><div class="skill-row"><span class="skill-name">Amazon A+ Content</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label">Selected Work</span>
+      <h2 class="section-title">Portfolio</h2>
+      <p class="section-desc">Projects where design solved a real business problem — with measurable results.</p>
+    </div>
+    <div class="portfolio-filters fade-up">
+      <button class="filter-btn active" data-filter="all">All Work</button>
+      <button class="filter-btn" data-filter="brand">Brand Identity</button>
+      <button class="filter-btn" data-filter="ads">Ad Creatives</button>
+      <button class="filter-btn" data-filter="social">Social Media</button>
+      <button class="filter-btn" data-filter="motion">Motion & Video</button>
+    </div>
+    <div class="portfolio-grid fade-up" id="portfolio-grid">
+
+      <div class="project-card" data-category="brand ads">
+        <div class="project-thumb" style="background: #0f1a0f;">
+          <span style="color:rgba(255,255,255,0.08)">SC</span>
+          <div class="overlay"><i class="bx bx-link-external overlay-icon"></i></div>
+        </div>
+        <div class="project-info">
+          <div class="project-tags"><span class="project-tag">Brand</span><span class="project-tag">Meta Ads</span><span class="project-tag">Email</span></div>
+          <h3>SkinnyCoffee Superboost</h3>
+          <p>Creative Lead for all digital marketing — Meta ad creatives, AI video, Klaviyo email campaigns, Amazon A+ content, and funnel pages across a US-based e-commerce brand.</p>
+          <div class="project-metric"><i class="bx bx-trending-up"></i>+60% conversion rate · +150% ad creative output</div>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="brand social">
+        <div class="project-thumb" style="background: #1a0f0a;">
+          <span style="color:rgba(255,255,255,0.08)">WF</span>
+          <div class="overlay"><i class="bx bx-link-external overlay-icon"></i></div>
+        </div>
+        <div class="project-info">
+          <div class="project-tags"><span class="project-tag">Brand Identity</span><span class="project-tag">Apparel</span></div>
+          <h3>Wild Fashion</h3>
+          <p>Built a complete visual identity from scratch for a streetwear brand — logo system, apparel graphics, lookbooks, packaging, and campaign visuals using AI-assisted workflows.</p>
+          <div class="project-metric"><i class="bx bx-trending-up"></i>+30% customer brand recognition</div>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="brand social motion">
+        <div class="project-thumb" style="background: #0a0a1a;">
+          <span style="color:rgba(255,255,255,0.08)">17C</span>
+          <div class="overlay"><i class="bx bx-link-external overlay-icon"></i></div>
+        </div>
+        <div class="project-info">
+          <div class="project-tags"><span class="project-tag">Social Media</span><span class="project-tag">Motion</span></div>
+          <h3>The 17th Century</h3>
+          <p>Led creative execution for a fashion and lifestyle brand — campaign visuals, short-form video edits, animated assets, and brand guidelines across all touchpoints.</p>
+          <div class="project-metric"><i class="bx bx-trending-up"></i>+25% visibility · +30% audience engagement</div>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="brand social">
+        <div class="project-thumb" style="background: #1a140a;">
+          <span style="color:rgba(255,255,255,0.08)">TWB</span>
+          <div class="overlay"><i class="bx bx-link-external overlay-icon"></i></div>
+        </div>
+        <div class="project-info">
+          <div class="project-tags"><span class="project-tag">Brand Identity</span><span class="project-tag">Finance</span></div>
+          <h3>The Whole Bakery Trading</h3>
+          <p>Sole creative for a Gen Z forex education brand. Built the full visual identity and translated complex financial messaging into engaging, accessible social content.</p>
+          <div class="project-metric"><i class="bx bx-trending-up"></i>+40% social engagement growth</div>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="ads motion">
+        <div class="project-thumb" style="background: #100a1a;">
+          <span style="color:rgba(255,255,255,0.08)">GQ</span>
+          <div class="overlay"><i class="bx bx-link-external overlay-icon"></i></div>
+        </div>
+        <div class="project-info">
+          <div class="project-tags"><span class="project-tag">Multi-client</span><span class="project-tag">SaaS</span><span class="project-tag">E-com</span></div>
+          <h3>GrowthQuest — Agency Work</h3>
+          <p>50+ monthly ad creatives, branded social assets, and short-form video edits across 10+ clients in e-commerce, SaaS, and high-ticket verticals. 100% on-time delivery rate.</p>
+          <div class="project-metric"><i class="bx bx-trending-up"></i>35% trial-to-paid conversion increase (SaaS client)</div>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="brand ads">
+        <div class="project-thumb" style="background: #0a1a12;">
+          <span style="color:rgba(255,255,255,0.08)">AI</span>
+          <div class="overlay"><i class="bx bx-link-external overlay-icon"></i></div>
+        </div>
+        <div class="project-info">
+          <div class="project-tags"><span class="project-tag">AI Workflow</span><span class="project-tag">Creative Direction</span></div>
+          <h3>AI-Integrated Design Workflow</h3>
+          <p>Developed and implemented an AI tool integration strategy across a design team — Midjourney, ChatGPT-4o, and ImageFX — for faster creative ideation and production at scale.</p>
+          <div class="project-metric"><i class="bx bx-trending-up"></i>+40% team output speed improvement</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <span class="section-label">Let's Work Together</span>
+        <h2>Have a project in mind?</h2>
+        <p>I'm available for freelance and contract work — brand identity, ad creatives, UI design, AI-powered campaigns. Let's build something that works.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="bx bx-envelope"></i></div>
+            <div class="contact-item-text">
+              <strong>Email</strong>
+              ariyostephen2004@gmail.com
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="bx bx-map"></i></div>
+            <div class="contact-item-text">
+              <strong>Location</strong>
+              Lagos, Nigeria — Working Remotely Worldwide
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="bx bx-time"></i></div>
+            <div class="contact-item-text">
+              <strong>Availability</strong>
+              WAT (UTC+1) · Flexible for US/EU time zones
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="bx bxl-linkedin"></i></div>
+            <div class="contact-item-text">
+              <strong>LinkedIn</strong>
+              linkedin.com/in/stephen-ariyo-6750052b0
             </div>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- portfolio section -->
-    <section class="portfolio active" id="portfolio">
-      <h2 class="heading">My Portfolio</h2>
-      <div class="portfolio-container container"></div>
-      <h3>Logofolio</h3>
-      <!-- <div class="row col portfolio-details">
-        <div class="col-12 col-lg-4 logofolio-box">
-          <p>1)</p>
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img
-              src="./images/favpng_minimalism-tattoo-geometry-logo.png"
-              alt=""
-            />
+      <div class="contact-form fade-up" style="transition-delay:0.15s">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-input" placeholder="John"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-input" placeholder="Doe"/>
           </div>
         </div>
-        <div class="col-12 col-lg-4 logofolio-box">
-          <p>2)</p>
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/pngwing.com (17).png" alt="" />
-          </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-input" placeholder="you@company.com"/>
         </div>
-
-        <div class="col-12 col-lg-4 logofolio-box">
-          <p>3)</p>
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/1.png" alt="" />
-          </div>
+        <div class="form-group">
+          <label class="form-label">Subject</label>
+          <input type="text" class="form-input" placeholder="Brand Identity Project"/>
         </div>
-        <div class="col-12 col-lg-4 logofolio-box">
-          <p>4)</p>
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/2.png" alt="" />
-          </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" placeholder="Tell me about your project..."></textarea>
         </div>
-        <div class="col-12 col-lg-4 logofolio-box">
-          <p>5)</p>
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/3.png" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 logofolio-box">
-          <p>6)</p>
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/4.png" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 logofolio-box">
-          <p>7)</p>
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/5.png" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 logofolio-box">
-          <p>8)</p>
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/6.png" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 logofolio-box">
-          <p>9)</p>
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/7.png" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 logofolio-box">
-          <p>10)</p>
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/8.png" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 logofolio-box">
-          <p>11)</p>
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/9.png" alt="" />
-          </div>
-        </div>
-      </div> -->
-      <hr />
-      <div class="portfolio-box">
-        <div class="portfolio-detail">
-          <p class="numb">01</p>
-        </div>
-
-        <div class="portfolio-detail">
-          <p class="numb">02</p>
-        </div>
-
-        <div class="portfolio-detail">
-          <p class="numb">03</p>
-        </div>
-
-        <div class="portfolio-detail">
-          <p class="numb">04</p>
-        </div>
-
-        <div class="portfolio-detail">
-          <p class="numb">05</p>
-        </div>
-
-        <div class="portfolio-detail">
-          <p class="numb">06</p>
-        </div>
-
-        <div class="portfolio-box">
-          <!-- Image carousel -->
-        </div>
+        <button class="submit-btn">
+          Send Message <i class="bx bx-send"></i>
+        </button>
       </div>
-      <!-- <h3>Designfolio</h3>
-      <div class="row col portfolio-details">
-        <h2>Shoe Poster Exploration</h2>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/Nike-Poster2.jpg" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/Nike-Poster.jpg" alt="" />
-          </div>
-        </div>
-        <div
-          class="col-12 col-lg-4 designfolio-box"
-          style="margin-bottom: 5rem"
-        >
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/Nike-Poster3.jpg" alt="" />
-          </div>
-        </div>
-        <hr />
-        <h2>Wild Fashion Social Media Launch</h2>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/WF-TO-D-WORLD.jpg" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/WILD-FASHION-mtab.jpg" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/WILD-FASHION-LAUNCH.gif" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/WF-SERIES-1-GROUP.jpg" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/JERSEY-1.jpg" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/JERSEY-7.jpg" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/NEW-WF-green.jpg" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/NEW-WF-Blue.jpg" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/NEW-WF-Pink.jpg" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/JERSEY-2.jpg" alt="" />
-          </div>
-        </div>
-        <div
-          class="col-12 col-lg-4 designfolio-box"
-          style="margin-bottom: 5rem"
-        >
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/JERSEY-3.jpg" alt="" />
-          </div>
-        </div>
-        <hr />
-        <h2>Product Advertisment Designs</h2>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img
-              src="./images/Creative Ecommerce Social media design for Sibro.jpeg"
-              alt=""
-            />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img
-              src="./images/Instagram Feed Design Poster _ Poster Promosi_Iklan Produk.jpeg"
-              alt=""
-            />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img
-              src="./images/Get your Body spray and deodorant at Havilah Scent….jpeg"
-              alt=""
-            />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/PRODUCT DESIGN FLYER DESIGN.jpeg" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img
-              src="./images/f210eb61-4e1a-439f-a372-afadbaf293ef.jpeg"
-              alt=""
-            />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img
-              src="./images/fresh modern stunning cool attractive fruit  beverage cans packaging branding design.jpeg"
-              alt=""
-            />
-          </div>
-        </div>
-        <div
-          class="col-12 col-lg-4 designfolio-box"
-          style="margin-bottom: 5rem"
-        >
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img
-              src="./images/Professional Flyer Design by Sammyarts 🧡.jpeg"
-              alt=""
-            />
-          </div>
-        </div>
-        <hr />
-        <h2>Social Media Prodct Flyers</h2>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img
-              src="./images/Creative Ecommerce Social media design for Sibro.jpeg"
-              alt=""
-            />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img
-              src="./images/Instagram Feed Design Poster _ Poster Promosi_Iklan Produk.jpeg"
-              alt=""
-            />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img
-              src="./images/Get your Body spray and deodorant at Havilah Scent….jpeg"
-              alt=""
-            />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/PRODUCT DESIGN FLYER DESIGN.jpeg" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img
-              src="./images/f210eb61-4e1a-439f-a372-afadbaf293ef.jpeg"
-              alt=""
-            />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img
-              src="./images/fresh modern stunning cool attractive fruit  beverage cans packaging branding design.jpeg"
-              alt=""
-            />
-          </div>
-        </div>
-        <div
-          class="col-12 col-lg-4 designfolio-box"
-          style="margin-bottom: 5rem"
-        >
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img
-              src="./images/Professional Flyer Design by Sammyarts 🧡.jpeg"
-              alt=""
-            />
-          </div>
-        </div>
-        <hr />
-        <h2>Others</h2>
-        <div
-          class="col-12 col-lg-4 designfolio-box"
-          style="margin-bottom: 5rem"
-        >
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/Dave.jpg" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/CASA.jpg" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/design-ad3.jpg" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/KONG.jpg" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/Avant.b.jpg" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/SECRET.jpg" alt="" />
-          </div>
-        </div>
-      </div>
-      <hr />
-      <h3>WebFolio</h3>
-      <div class="row col portfolio-details">
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/portfolio1.jpg" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/portfolio2.jpg" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/portfolio3.jpg" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/portfolio4.jpg" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/portfolio5.jpg" alt="" />
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 designfolio-box">
-          <div class="img-box d-flex align-items-center justify-content-center">
-            <img src="./images/portfolio6.jpg" alt="" />
-          </div>
-        </div>
-      </div> -->
-    </section>
-    <!-- Lets Work section -->
-    <section class="lets-work">
-      <h1 class="text-center">
-        Lets Work Together to Achieve Your Brand Goals
-      </h1>
-    </section>
-    <!-- <p class="text-center">Stephen Ariyo Portfolio 2024 | version 1.0</p> -->
-    <!-- Bootstrap js -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-    <!-- custom js -->
-    <script src="js/script.js"></script>
-  </body>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">
+      © 2025 <span>Stephen O. Ariyo</span> — Designed & Built with purpose.
+    </div>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/in/stephen-ariyo-6750052b0" target="_blank" class="social-link"><i class="bx bxl-linkedin"></i></a>
+      <a href="https://github.com/HBKtheKid" target="_blank" class="social-link"><i class="bx bxl-github"></i></a>
+      <a href="mailto:ariyostephen2004@gmail.com" class="social-link"><i class="bx bx-envelope"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // CURSOR
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
+  function animRing() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animRing); }
+  animRing();
+  document.querySelectorAll('a, button, .project-card, .service-card').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.width = '18px'; cursor.style.height = '18px'; ring.style.width = '52px'; ring.style.height = '52px'; });
+    el.addEventListener('mouseleave', () => { cursor.style.width = '10px'; cursor.style.height = '10px'; ring.style.width = '36px'; ring.style.height = '36px'; });
+  });
+
+  // HAMBURGER
+  const ham = document.getElementById('hamburger');
+  const mNav = document.getElementById('mobile-nav');
+  ham.addEventListener('click', () => { ham.classList.toggle('open'); mNav.classList.toggle('open'); });
+  mNav.querySelectorAll('.nav-link, .nav-cta').forEach(l => { l.addEventListener('click', () => { ham.classList.remove('open'); mNav.classList.remove('open'); }); });
+
+  // HEADER SCROLL
+  window.addEventListener('scroll', () => { document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50); });
+
+  // ACTIVE NAV
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id; });
+    navLinks.forEach(l => { l.classList.toggle('active', l.getAttribute('href') === '#' + cur); });
+  });
+
+  // ROLE ROTATOR
+  const roles = ['Graphic Designer', 'Creative Lead', 'Brand Strategist', 'UI/UX Designer', 'Motion Designer'];
+  let ri = 0;
+  const roleEl = document.getElementById('role-text');
+  function rotateRole() {
+    roleEl.style.opacity = '0';
+    roleEl.style.transform = 'translateY(-10px)';
+    setTimeout(() => {
+      ri = (ri + 1) % roles.length;
+      roleEl.textContent = roles[ri];
+      roleEl.style.transition = 'opacity 0.4s, transform 0.4s';
+      roleEl.style.opacity = '1';
+      roleEl.style.transform = 'translateY(0)';
+    }, 300);
+  }
+  roleEl.style.transition = 'opacity 0.4s, transform 0.4s';
+  setInterval(rotateRole, 2800);
+
+  // RESUME TABS
+  document.querySelectorAll('.resume-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.resume-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.resume-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+      if (tab.dataset.tab === 'skills') animateSkills();
+    });
+  });
+
+  // SKILL BARS
+  function animateSkills() {
+    document.querySelectorAll('.skill-fill').forEach(bar => {
+      bar.style.width = bar.dataset.width + '%';
+    });
+  }
+
+  // PORTFOLIO FILTER
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('.project-card').forEach(card => {
+        const cats = card.dataset.category || '';
+        const show = f === 'all' || cats.includes(f);
+        card.style.opacity = show ? '1' : '0.2';
+        card.style.pointerEvents = show ? 'auto' : 'none';
+        card.style.transform = show ? '' : 'scale(0.97)';
+        card.style.transition = 'opacity 0.3s, transform 0.3s';
+      });
+    });
+  });
+
+  // FADE UP OBSERVER
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); if (e.target.closest('#resume') || document.querySelector('#panel-skills.active')) animateSkills(); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  // CONTACT FORM
+  document.querySelector('.submit-btn').addEventListener('click', function() {
+    const btn = this;
+    btn.innerHTML = '<i class="bx bx-check"></i> Sent!';
+    btn.style.background = '#22c55e';
+    setTimeout(() => { btn.innerHTML = 'Send Message <i class="bx bx-send"></i>'; btn.style.background = ''; }, 3000);
+  });
+</script>
+</body>
 </html>
