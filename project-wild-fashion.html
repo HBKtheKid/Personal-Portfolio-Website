@@ -80,7 +80,8 @@
       }
       h1,
       h2,
-      h3 {
+      h3,
+      h4 {
         font-family: "Syne", sans-serif;
         font-weight: 700;
         line-height: 1.15;
@@ -132,16 +133,15 @@
         padding: 0.5rem 1.2rem;
         border-radius: 4px;
         transition: opacity 0.2s;
-        letter-spacing: 0.05em;
       }
       .hire-btn:hover {
         opacity: 0.85;
       }
       .project-hero {
-        min-height: 70vh;
+        min-height: 68vh;
         display: flex;
         align-items: flex-end;
-        padding: 120px 2rem 5rem;
+        padding: 120px 2rem 4rem;
         position: relative;
         overflow: hidden;
       }
@@ -206,14 +206,14 @@
       }
       .project-hero .sub {
         color: var(--text2);
-        font-size: 1.15rem;
-        max-width: 600px;
+        font-size: 1.1rem;
+        max-width: 580px;
         line-height: 1.75;
         margin-bottom: 2rem;
       }
       .hero-meta {
         display: flex;
-        gap: 2rem;
+        gap: 2.5rem;
         flex-wrap: wrap;
       }
       .meta-label {
@@ -229,40 +229,6 @@
         color: var(--text);
         font-weight: 500;
       }
-      .stats-bar {
-        background: var(--bg2);
-        border-top: 1px solid var(--border);
-        border-bottom: 1px solid var(--border);
-        padding: 2.5rem 2rem;
-      }
-      .stats-bar-inner {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1px;
-        background: var(--border);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        overflow: hidden;
-      }
-      .stat-item {
-        background: var(--bg2);
-        padding: 1.5rem 2rem;
-        text-align: center;
-      }
-      .stat-item .num {
-        font-family: "Syne", sans-serif;
-        font-size: 2.2rem;
-        font-weight: 800;
-        color: var(--accent);
-        line-height: 1;
-        margin-bottom: 0.3rem;
-      }
-      .stat-item .lbl {
-        font-size: 0.8rem;
-        color: var(--text2);
-      }
       .project-content {
         max-width: 1200px;
         margin: 0 auto;
@@ -270,12 +236,12 @@
       }
       .content-grid {
         display: grid;
-        grid-template-columns: 1fr 360px;
-        gap: 5rem;
+        grid-template-columns: 1fr 300px;
+        gap: 4rem;
         align-items: start;
       }
       .content-main h2 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         font-weight: 800;
         margin-bottom: 1rem;
         margin-top: 3rem;
@@ -286,19 +252,7 @@
       .content-main p {
         color: var(--text2);
         line-height: 1.85;
-        margin-bottom: 1.25rem;
-      }
-      .content-main ul {
-        color: var(--text2);
-        line-height: 1.85;
-        padding-left: 1.5rem;
-        margin-bottom: 1.25rem;
-      }
-      .content-main ul li {
-        margin-bottom: 0.5rem;
-      }
-      .content-main ul li::marker {
-        color: var(--accent);
+        margin-bottom: 1.2rem;
       }
       .content-sidebar {
         position: sticky;
@@ -308,23 +262,23 @@
         background: var(--bg2);
         border: 1px solid var(--border);
         border-radius: 10px;
-        padding: 1.75rem;
-        margin-bottom: 1.5rem;
+        padding: 1.5rem;
+        margin-bottom: 1.25rem;
       }
       .sidebar-card h3 {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.1em;
         color: var(--accent);
-        margin-bottom: 1rem;
+        margin-bottom: 0.9rem;
       }
       .sidebar-item {
         display: flex;
         justify-content: space-between;
-        padding: 0.6rem 0;
+        padding: 0.55rem 0;
         border-bottom: 1px solid var(--border);
-        font-size: 0.88rem;
+        font-size: 0.85rem;
       }
       .sidebar-item:last-child {
         border-bottom: none;
@@ -346,52 +300,28 @@
         background: var(--bg3);
         border: 1px solid var(--border);
         border-radius: 4px;
-        padding: 0.25rem 0.65rem;
-        font-size: 0.75rem;
+        padding: 0.22rem 0.6rem;
+        font-size: 0.73rem;
         color: var(--text2);
-      }
-      .deliverables-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 1rem;
-        margin-top: 1.5rem;
-      }
-      .deliverable-card {
-        background: var(--bg2);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 1.25rem;
-      }
-      .deliverable-card .icon {
-        font-size: 1.4rem;
-        color: var(--accent);
-        margin-bottom: 0.5rem;
-      }
-      .deliverable-card .title {
-        font-family: "Syne", sans-serif;
-        font-size: 0.88rem;
-        font-weight: 700;
-        margin-bottom: 0.3rem;
-      }
-      .deliverable-card .desc {
-        font-size: 0.78rem;
-        color: var(--text3);
-        line-height: 1.5;
       }
       .process-steps {
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
-        margin-top: 1.5rem;
+        gap: 1rem;
+        margin-top: 1.25rem;
       }
       .process-step {
         display: flex;
-        gap: 1.25rem;
+        gap: 1rem;
         align-items: flex-start;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1.1rem;
       }
       .step-num {
-        width: 36px;
-        height: 36px;
+        width: 32px;
+        height: 32px;
         background: rgba(249, 115, 22, 0.1);
         border: 1px solid rgba(249, 115, 22, 0.2);
         border-radius: 50%;
@@ -399,47 +329,546 @@
         align-items: center;
         justify-content: center;
         font-family: "Syne", sans-serif;
-        font-size: 0.85rem;
+        font-size: 0.78rem;
         font-weight: 700;
         color: var(--accent);
         flex-shrink: 0;
       }
       .step-body h4 {
-        font-family: "Syne", sans-serif;
-        font-size: 1rem;
+        font-size: 0.9rem;
         font-weight: 700;
-        margin-bottom: 0.3rem;
+        margin-bottom: 0.2rem;
       }
       .step-body p {
-        font-size: 0.88rem;
+        font-size: 0.82rem;
         color: var(--text2);
-        line-height: 1.7;
+        line-height: 1.6;
+        margin: 0;
       }
-      .results-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        margin-top: 1.5rem;
-      }
-      .result-card {
+      .results-strip {
         background: var(--bg2);
-        border: 1px solid var(--border);
-        border-left: 3px solid var(--accent);
-        border-radius: 8px;
-        padding: 1.25rem;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        padding: 3rem 2rem;
       }
-      .result-card .r-num {
+      .results-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--border);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .rs-item {
+        background: var(--bg2);
+        padding: 2rem;
+        text-align: center;
+      }
+      .rs-num {
         font-family: "Syne", sans-serif;
-        font-size: 1.8rem;
+        font-size: 2.4rem;
         font-weight: 800;
         color: var(--accent);
         line-height: 1;
+        margin-bottom: 0.3rem;
       }
-      .result-card .r-label {
+      .rs-label {
         font-size: 0.82rem;
         color: var(--text2);
-        margin-top: 0.3rem;
       }
+
+      /* ── BRAND IDENTITY SHOWCASE ── */
+      .brand-showcase {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 5rem 2rem;
+      }
+      .showcase-label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 0.75rem;
+        display: block;
+      }
+      .showcase-title {
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        font-weight: 800;
+        margin-bottom: 0.6rem;
+      }
+      .showcase-sub {
+        color: var(--text2);
+        font-size: 0.95rem;
+        max-width: 540px;
+        margin-bottom: 3rem;
+      }
+
+      /* LOGO SYSTEM */
+      .logo-section-title {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text3);
+        margin-bottom: 1.25rem;
+      }
+      .logo-system {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--border);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 3rem;
+      }
+      .logo-card {
+        padding: 2.5rem 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.25rem;
+        min-height: 180px;
+        transition: filter 0.2s;
+      }
+      .logo-card.dark {
+        background: #0f0c0a;
+      }
+      .logo-card.mid {
+        background: #1a0f0a;
+      }
+      .logo-card.light {
+        background: #f0ede6;
+      }
+      .wf-logo-primary {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 2.2rem;
+        letter-spacing: 0.08em;
+      }
+      .logo-card.dark .wf-logo-primary,
+      .logo-card.mid .wf-logo-primary {
+        color: #f97316;
+      }
+      .logo-card.light .wf-logo-primary {
+        color: #0f0c0a;
+      }
+      .wf-logo-sub {
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+      .logo-card.dark .wf-logo-sub,
+      .logo-card.mid .wf-logo-sub {
+        color: rgba(240, 237, 230, 0.4);
+      }
+      .logo-card.light .wf-logo-sub {
+        color: rgba(15, 12, 10, 0.4);
+      }
+      .wf-icon-mark {
+        width: 60px;
+        height: 60px;
+        border: 2px solid #f97316;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 1.6rem;
+        color: #f97316;
+      }
+      .logo-lbl {
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        opacity: 0.35;
+        text-align: center;
+      }
+      .logo-card.light .logo-lbl {
+        color: #111;
+      }
+
+      /* COLOUR PALETTE — INTERACTIVE */
+      .palette-section {
+        margin-bottom: 3rem;
+      }
+      .palette-row {
+        display: flex;
+        gap: 0;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .palette-swatch {
+        flex: 1;
+        min-height: 90px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 0.75rem;
+        transition: flex 0.3s ease;
+      }
+      .palette-swatch:hover {
+        flex: 2;
+      }
+      .palette-swatch.expanded {
+        flex: 2.5;
+      }
+      .ps-name {
+        font-family: "Syne", sans-serif;
+        font-size: 0.75rem;
+        font-weight: 700;
+      }
+      .ps-hex {
+        font-size: 0.62rem;
+        opacity: 0.6;
+      }
+      .palette-preview-label {
+        font-size: 0.75rem;
+        color: var(--text2);
+        margin: 1rem 0 0.5rem;
+        font-weight: 500;
+      }
+      .colour-preview {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: background 0.4s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        min-height: 100px;
+      }
+      .cp-logo {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 1.6rem;
+        transition: color 0.4s;
+      }
+      .cp-text {
+        font-size: 0.8rem;
+        opacity: 0.6;
+        transition: color 0.4s;
+      }
+
+      /* TYPOGRAPHY */
+      .type-section {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 3rem;
+      }
+      .type-display-text {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        line-height: 1.05;
+        margin-bottom: 1.25rem;
+        letter-spacing: -0.02em;
+      }
+      .type-display-text span {
+        color: var(--accent);
+      }
+      .type-meta-row {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+      }
+      .type-spec {
+        font-size: 0.72rem;
+        color: var(--text3);
+        letter-spacing: 0.05em;
+      }
+      .type-spec strong {
+        color: var(--text2);
+        font-weight: 600;
+      }
+      .type-body-sample {
+        color: var(--text2);
+        font-size: 0.9rem;
+        line-height: 1.75;
+        max-width: 480px;
+      }
+      .type-tag-sample {
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--text3);
+        margin-top: 0.75rem;
+      }
+
+      /* LOOKBOOK CAROUSEL */
+      .lookbook-section {
+        margin-bottom: 1rem;
+      }
+      .lookbook-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.25rem;
+      }
+      .lookbook-nav h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+      .lb-controls {
+        display: flex;
+        gap: 0.5rem;
+      }
+      .lb-btn {
+        width: 38px;
+        height: 38px;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: var(--text2);
+        transition: all 0.2s;
+        font-size: 1rem;
+      }
+      .lb-btn:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .lookbook-track-wrap {
+        overflow: hidden;
+        border-radius: 12px;
+      }
+      .lookbook-track {
+        display: flex;
+        gap: 1.25rem;
+        transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .lb-slide {
+        flex-shrink: 0;
+        width: calc(33.333% - 0.85rem);
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        background: var(--bg2);
+      }
+      .lb-img {
+        height: 220px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .lb-img-1 {
+        background: linear-gradient(145deg, #180c08, #f9731608);
+      }
+      .lb-img-2 {
+        background: linear-gradient(145deg, #0c0c0c, #7c3d1a18);
+      }
+      .lb-img-3 {
+        background: linear-gradient(145deg, #180c08, #c2410c18);
+      }
+      .lb-img-4 {
+        background: linear-gradient(145deg, #0f0c0a, #f0ede610);
+      }
+      .lb-img-5 {
+        background: linear-gradient(145deg, #180c08, #f9731612);
+      }
+      .lb-img-6 {
+        background: linear-gradient(145deg, #1a0f0a, #f97316 08);
+      }
+      .lb-glyph {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 5rem;
+        color: rgba(249, 115, 22, 0.08);
+        letter-spacing: -0.05em;
+      }
+      .lb-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+        padding: 0.75rem;
+      }
+      .lb-tag {
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(249, 115, 22, 0.8);
+      }
+      .lb-caption {
+        font-family: "Syne", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: #fff;
+      }
+      .lb-desc {
+        padding: 0.9rem 1rem;
+        font-size: 0.75rem;
+        color: var(--text3);
+      }
+
+      /* APPAREL STRIP */
+      .apparel-strip {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-bottom: 3rem;
+      }
+      .ap-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .ap-visual {
+        height: 160px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .ap-v1 {
+        background: linear-gradient(135deg, #1a0f0a, #0f0c0a);
+      }
+      .ap-v2 {
+        background: linear-gradient(135deg, #0c0c0c, #1a0f0a);
+      }
+      .ap-v3 {
+        background: linear-gradient(135deg, #f0ede6, #e8e4dd);
+      }
+      .ap-tee {
+        width: 80px;
+        height: 90px;
+        position: relative;
+      }
+      .ap-tee-body {
+        width: 60px;
+        height: 65px;
+        background: #f97316;
+        position: absolute;
+        bottom: 0;
+        left: 10px;
+        border-radius: 0 0 4px 4px;
+      }
+      .ap-tee-sleeve-l {
+        width: 22px;
+        height: 28px;
+        background: #f97316;
+        position: absolute;
+        top: 12px;
+        left: 0;
+        border-radius: 3px 0 0 3px;
+        transform: rotate(-8deg);
+        transform-origin: right top;
+      }
+      .ap-tee-sleeve-r {
+        width: 22px;
+        height: 28px;
+        background: #f97316;
+        position: absolute;
+        top: 12px;
+        right: 0;
+        border-radius: 0 3px 3px 0;
+        transform: rotate(8deg);
+        transform-origin: left top;
+      }
+      .ap-tee-collar {
+        width: 20px;
+        height: 10px;
+        background: #0f0c0a;
+        border-radius: 0 0 8px 8px;
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .ap-tee-graphic {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 0.55rem;
+        color: #0f0c0a;
+        text-align: center;
+        letter-spacing: 0.06em;
+        line-height: 1.2;
+        white-space: nowrap;
+      }
+      .ap-hoodie-text {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 1.8rem;
+        color: rgba(249, 115, 22, 0.12);
+        letter-spacing: 0.1em;
+      }
+      .ap-hangtag {
+        width: 44px;
+        height: 64px;
+        background: #f0ede6;
+        border-radius: 3px 3px 3px 3px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+      .ap-hangtag-brand {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 0.5rem;
+        color: #0f0c0a;
+        letter-spacing: 0.05em;
+      }
+      .ap-hangtag-line {
+        width: 24px;
+        height: 1px;
+        background: #0f0c0a;
+        opacity: 0.2;
+      }
+      .ap-hangtag-size {
+        font-size: 0.42rem;
+        color: #777;
+        letter-spacing: 0.08em;
+      }
+      .ap-hole {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #ddd;
+        border: 1px solid #bbb;
+        margin-bottom: 3px;
+      }
+      .ap-info {
+        padding: 0.85rem 1rem;
+      }
+      .ap-info h4 {
+        font-size: 0.85rem;
+        font-weight: 700;
+        margin-bottom: 0.15rem;
+      }
+      .ap-info p {
+        font-size: 0.72rem;
+        color: var(--text3);
+      }
+
+      /* NEXT */
       .next-project {
         background: var(--bg2);
         border-top: 1px solid var(--border);
@@ -464,7 +893,7 @@
       }
       .next-title {
         font-family: "Syne", sans-serif;
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         font-weight: 800;
         margin-bottom: 0.75rem;
       }
@@ -487,7 +916,6 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: transparent;
         color: var(--text2);
         font-size: 0.88rem;
         padding: 0.75rem 1.5rem;
@@ -517,11 +945,38 @@
         .content-sidebar {
           position: static;
         }
-        .stats-bar-inner {
+        .results-inner {
           grid-template-columns: 1fr 1fr;
         }
-        .results-grid {
+        .logo-system {
           grid-template-columns: 1fr;
+        }
+        .lb-slide {
+          width: calc(50% - 0.625rem);
+        }
+        .apparel-strip {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 600px) {
+        .results-inner {
+          grid-template-columns: 1fr 1fr;
+        }
+        .lb-slide {
+          width: calc(100% - 0px);
+        }
+        .palette-row {
+          flex-wrap: wrap;
+        }
+        .palette-swatch {
+          min-width: 30%;
+        }
+        .apparel-strip {
+          grid-template-columns: 1fr;
+        }
+        .next-inner {
+          flex-direction: column;
+          align-items: flex-start;
         }
       }
     </style>
@@ -529,7 +984,6 @@
   <body>
     <div class="cursor" id="cursor"></div>
     <div class="cursor-ring" id="cursor-ring"></div>
-
     <nav class="project-nav">
       <a href="index.html#portfolio" class="back-btn"
         ><i class="bx bx-arrow-back"></i> Back to Work</a
@@ -537,61 +991,36 @@
       <a href="index.html" class="nav-logo">S<span>.</span>Ariyo</a>
       <a href="index.html#contact" class="hire-btn">Hire Me</a>
     </nav>
-
     <div class="project-hero">
       <div class="hero-bg"></div>
       <div class="hero-bg-text">WILD</div>
       <div class="hero-content">
         <div class="project-tag-row">
           <span class="ptag">Brand Identity</span
-          ><span class="ptag">Apparel Design</span
+          ><span class="ptag">Apparel Graphics</span
           ><span class="ptag">Lookbooks</span
+          ><span class="ptag">Campaign Design</span
           ><span class="ptag">AI-Assisted</span>
         </div>
         <h1>Wild Fashion</h1>
         <p class="sub">
-          Built a complete streetwear brand identity from zero — logo system,
-          apparel graphics, packaging, lookbooks, and AI-assisted campaign
-          visuals that increased brand recognition by 30%.
+          Full visual identity built from scratch for a Lagos streetwear brand —
+          logo system, brand language, apparel graphics, lookbooks, and four
+          campaign launches.
         </p>
         <div class="hero-meta">
-          <div class="meta-item">
+          <div>
             <div class="meta-label">Role</div>
-            <div class="meta-value">Senior Creative Lead</div>
+            <div class="meta-value">Creative Lead & Brand Designer</div>
           </div>
-          <div class="meta-item">
+          <div>
             <div class="meta-label">Duration</div>
             <div class="meta-value">Dec 2023 – Mar 2025</div>
           </div>
-          <div class="meta-item">
-            <div class="meta-label">Type</div>
-            <div class="meta-value">Contract, Remote</div>
+          <div>
+            <div class="meta-label">Sector</div>
+            <div class="meta-value">Fashion & Apparel</div>
           </div>
-          <div class="meta-item">
-            <div class="meta-label">Industry</div>
-            <div class="meta-value">Fashion / Streetwear</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="stats-bar">
-      <div class="stats-bar-inner">
-        <div class="stat-item">
-          <div class="num">+30%</div>
-          <div class="lbl">Brand Recognition</div>
-        </div>
-        <div class="stat-item">
-          <div class="num">0→1</div>
-          <div class="lbl">Identity Built from Scratch</div>
-        </div>
-        <div class="stat-item">
-          <div class="num">4</div>
-          <div class="lbl">Collection Launches</div>
-        </div>
-        <div class="stat-item">
-          <div class="num">15mo</div>
-          <div class="lbl">Project Duration</div>
         </div>
       </div>
     </div>
@@ -601,141 +1030,62 @@
         <div class="content-main fade-up">
           <h2>The Brief</h2>
           <p>
-            Wild Fashion came to me with no existing brand identity — just a
-            vision for a streetwear label that needed to feel authentic, bold,
-            and built to last. They needed everything: a name treatment, logo
-            system, color palette, typography, apparel graphics, lookbook
-            photography art direction, and packaging.
+            Wild Fashion came in with product ideas and a name — no visual
+            identity, no brand voice, no design system. The brief was to build
+            everything from zero: a logo that could live on clothing tags,
+            social media, and packaging, a brand system that could scale across
+            multiple seasonal drops, and campaign visuals that felt editorial
+            rather than transactional.
           </p>
-          <p>
-            The goal wasn't just to look good — it was to build brand equity
-            from day one, so that customers could recognize and connect with the
-            label across every touchpoint.
-          </p>
-
           <h2>My Approach</h2>
           <div class="process-steps">
             <div class="process-step">
               <div class="step-num">01</div>
               <div class="step-body">
-                <h4>Brand Discovery</h4>
+                <h4>Brand Strategy & Positioning</h4>
                 <p>
-                  I ran a deep discovery process — competitive audit, audience
-                  persona research, mood boarding, and direction exploration.
-                  Three distinct visual directions were developed and presented
-                  before we locked the final brand language.
+                  Before any visual decisions, defined the brand positioning:
+                  raw, confident, Lagos-bred streetwear for a gen-Z audience.
+                  That directional anchor shaped every visual choice after it.
                 </p>
               </div>
             </div>
             <div class="process-step">
               <div class="step-num">02</div>
               <div class="step-body">
-                <h4>Logo System & Visual Identity</h4>
+                <h4>Logo & Identity System</h4>
                 <p>
-                  Built a flexible logo system — primary logo, secondary mark,
-                  and icon variant — with full usage rules. Typography pairing
-                  was chosen for legibility at both large display sizes and
-                  small garment labels.
+                  Designed three logo variants — primary wordmark, icon mark,
+                  and reversed — all built around a single typographic treatment
+                  using Syne. The system works at scale from hangtag to
+                  billboard.
                 </p>
               </div>
             </div>
             <div class="process-step">
               <div class="step-num">03</div>
               <div class="step-body">
-                <h4>Apparel Graphics & Packaging</h4>
+                <h4>AI-Assisted Campaign Ideation</h4>
                 <p>
-                  Designed graphic tees, hoodie prints, and cap embroideries for
-                  four collections. Simultaneously developed packaging —
-                  hangtags, poly bags, tissue paper — that extended the brand
-                  into physical touchpoints.
+                  Used ChatGPT-4o for campaign naming and caption strategy, and
+                  Whisk/Midjourney for visual direction exploration —
+                  compressing concept-to-campaign time significantly.
                 </p>
               </div>
             </div>
             <div class="process-step">
               <div class="step-num">04</div>
               <div class="step-body">
-                <h4>AI-Assisted Campaign Visuals</h4>
+                <h4>Apparel & Packaging Graphics</h4>
                 <p>
-                  Used ChatGPT-4o for campaign concept ideation and Midjourney
-                  for visual exploration of campaign directions before
-                  committing to production. This reduced the pre-production
-                  phase by 60% on each launch.
+                  Designed all graphics for SS25 and AW24 collections — tee
+                  prints, hoodie back prints, hangtag layouts, and packaging
+                  wrap — maintaining brand cohesion across 4 drops.
                 </p>
               </div>
             </div>
           </div>
-
-          <h2>Deliverables</h2>
-          <div class="deliverables-grid">
-            <div class="deliverable-card">
-              <div class="icon"><i class="bx bxs-paint"></i></div>
-              <div class="title">Brand Identity System</div>
-              <div class="desc">
-                Logo, palette, typography, usage guidelines
-              </div>
-            </div>
-            <div class="deliverable-card">
-              <div class="icon"><i class="bx bx-t-shirt"></i></div>
-              <div class="title">Apparel Graphics</div>
-              <div class="desc">
-                4 collections across tees, hoodies, and caps
-              </div>
-            </div>
-            <div class="deliverable-card">
-              <div class="icon"><i class="bx bx-book-open"></i></div>
-              <div class="title">Lookbooks</div>
-              <div class="desc">
-                Art-directed digital and print lookbooks per collection
-              </div>
-            </div>
-            <div class="deliverable-card">
-              <div class="icon"><i class="bx bx-package"></i></div>
-              <div class="title">Packaging</div>
-              <div class="desc">
-                Hangtags, poly bags, tissue paper, stickers
-              </div>
-            </div>
-            <div class="deliverable-card">
-              <div class="icon"><i class="bx bx-image"></i></div>
-              <div class="title">Campaign Visuals</div>
-              <div class="desc">AI-assisted visual content for each launch</div>
-            </div>
-            <div class="deliverable-card">
-              <div class="icon"><i class="bx bx-file"></i></div>
-              <div class="title">Brand Guidelines</div>
-              <div class="desc">
-                Full documentation for internal and external use
-              </div>
-            </div>
-          </div>
-
-          <h2>Results</h2>
-          <div class="results-grid">
-            <div class="result-card">
-              <div class="r-num">+30%</div>
-              <div class="r-label">
-                Customer brand recognition increase post-launch
-              </div>
-            </div>
-            <div class="result-card">
-              <div class="r-num">4</div>
-              <div class="r-label">
-                Full collection launches delivered on schedule
-              </div>
-            </div>
-            <div class="result-card">
-              <div class="r-num">−60%</div>
-              <div class="r-label">
-                Pre-production time reduced per launch via AI tools
-              </div>
-            </div>
-            <div class="result-card">
-              <div class="r-num">0→1</div>
-              <div class="r-label">Complete brand built from a blank page</div>
-            </div>
-          </div>
         </div>
-
         <div class="content-sidebar">
           <div class="sidebar-card">
             <h3>Project Info</h3>
@@ -744,15 +1094,14 @@
             </div>
             <div class="sidebar-item">
               <span class="k">Role</span
-              ><span class="v">Senior Creative Lead</span>
+              ><span class="v">Creative Lead & Designer</span>
             </div>
             <div class="sidebar-item">
               <span class="k">Duration</span
               ><span class="v">Dec 2023 – Mar 2025</span>
             </div>
             <div class="sidebar-item">
-              <span class="k">Industry</span
-              ><span class="v">Fashion / Streetwear</span>
+              <span class="k">Type</span><span class="v">Contract, Remote</span>
             </div>
           </div>
           <div class="sidebar-card">
@@ -768,15 +1117,304 @@
               ><span class="tool-chip">Canva</span>
             </div>
           </div>
-          <div class="sidebar-card">
-            <h3>Key Outcomes</h3>
-            <div class="sidebar-item">
-              <span class="k">Brand Recognition</span
-              ><span class="v" style="color: var(--accent)">+30%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="results-strip">
+      <div class="results-inner">
+        <div class="rs-item">
+          <div class="rs-num">+30%</div>
+          <div class="rs-label">Customer brand recognition</div>
+        </div>
+        <div class="rs-item">
+          <div class="rs-num">4</div>
+          <div class="rs-label">Collection drops delivered</div>
+        </div>
+        <div class="rs-item">
+          <div class="rs-num">100%</div>
+          <div class="rs-label">On-time project delivery</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BRAND IDENTITY SHOWCASE -->
+    <div class="brand-showcase fade-up">
+      <span class="showcase-label">Brand Identity System</span>
+      <h2 class="showcase-title">Visual Identity</h2>
+      <p class="showcase-sub">
+        The complete brand system — logo variants, colour palette, typography,
+        apparel graphics, and campaign lookbook. Interact with each section.
+      </p>
+
+      <!-- LOGO -->
+      <div class="logo-section-title">Logo System</div>
+      <div class="logo-system">
+        <div class="logo-card dark">
+          <div class="wf-logo-primary">WILD</div>
+          <div class="wf-logo-sub">Fashion House</div>
+          <div class="logo-lbl">Primary — Dark BG</div>
+        </div>
+        <div class="logo-card mid">
+          <div class="wf-icon-mark">W</div>
+          <div class="logo-lbl">Icon Mark</div>
+        </div>
+        <div class="logo-card light">
+          <div class="wf-logo-primary">WILD</div>
+          <div class="wf-logo-sub">Fashion House</div>
+          <div class="logo-lbl">Reversed — Light BG</div>
+        </div>
+      </div>
+
+      <!-- COLOUR PALETTE -->
+      <div class="palette-section">
+        <div class="logo-section-title">
+          Colour Palette — hover or tap a swatch to preview
+        </div>
+        <div class="palette-row" id="palette">
+          <div
+            class="palette-swatch"
+            style="background: #f97316"
+            data-bg="#f97316"
+            data-text="#fff"
+            data-name="Flame"
+          >
+            <div class="ps-name" style="color: #fff">Flame</div>
+            <div class="ps-hex" style="color: rgba(255, 255, 255, 0.65)">
+              #F97316
             </div>
-            <div class="sidebar-item">
-              <span class="k">Launches Delivered</span
-              ><span class="v" style="color: var(--accent)">4 Collections</span>
+          </div>
+          <div
+            class="palette-swatch"
+            style="background: #0f0c0a"
+            data-bg="#0f0c0a"
+            data-text="#f0ede6"
+            data-name="Obsidian"
+          >
+            <div class="ps-name" style="color: #f0ede6">Obsidian</div>
+            <div class="ps-hex" style="color: rgba(240, 237, 230, 0.5)">
+              #0F0C0A
+            </div>
+          </div>
+          <div
+            class="palette-swatch"
+            style="background: #1a0f0a"
+            data-bg="#1a0f0a"
+            data-text="#f0ede6"
+            data-name="Ember"
+          >
+            <div class="ps-name" style="color: #f0ede6">Ember</div>
+            <div class="ps-hex" style="color: rgba(240, 237, 230, 0.4)">
+              #1A0F0A
+            </div>
+          </div>
+          <div
+            class="palette-swatch"
+            style="background: #f0ede6; border: 1px solid #ddd"
+            data-bg="#f0ede6"
+            data-text="#111"
+            data-name="Parchment"
+          >
+            <div class="ps-name" style="color: #111">Parchment</div>
+            <div class="ps-hex" style="color: #777">#F0EDE6</div>
+          </div>
+          <div
+            class="palette-swatch"
+            style="background: #7c3d1a"
+            data-bg="#7c3d1a"
+            data-text="#fff"
+            data-name="Rust"
+          >
+            <div class="ps-name" style="color: #fff">Rust</div>
+            <div class="ps-hex" style="color: rgba(255, 255, 255, 0.6)">
+              #7C3D1A
+            </div>
+          </div>
+          <div
+            class="palette-swatch"
+            style="background: #c2410c"
+            data-bg="#c2410c"
+            data-text="#fff"
+            data-name="Copper"
+          >
+            <div class="ps-name" style="color: #fff">Copper</div>
+            <div class="ps-hex" style="color: rgba(255, 255, 255, 0.6)">
+              #C2410C
+            </div>
+          </div>
+        </div>
+        <p class="palette-preview-label">Preview on brand ↓</p>
+        <div
+          class="colour-preview"
+          id="colour-preview"
+          style="background: #0f0c0a"
+        >
+          <div class="cp-logo" id="cp-logo" style="color: #f97316">WILD</div>
+          <div class="cp-text" id="cp-text" style="color: #f0ede6">
+            Fashion House · SS25
+          </div>
+        </div>
+      </div>
+
+      <!-- TYPOGRAPHY -->
+      <div class="logo-section-title">Typography</div>
+      <div class="type-section">
+        <div class="type-display-text">
+          <span>Wild</span> enough<br />to be yourself.
+        </div>
+        <div class="type-meta-row">
+          <div class="type-spec">
+            <strong>Syne 800</strong> — Display & Heading
+          </div>
+          <div class="type-spec">
+            <strong>Outfit 400</strong> — Body & Caption
+          </div>
+          <div class="type-spec"><strong>Syne 600</strong> — Labels & Tags</div>
+        </div>
+        <div class="type-body-sample">
+          Designed for those who wear confidence like a second skin. Every piece
+          is a statement. Every stitch, intentional.
+        </div>
+        <div class="type-tag-sample">
+          WILD FASHION · SS25 · LIMITED EDITION · MADE WITH PURPOSE
+        </div>
+      </div>
+
+      <!-- APPAREL MOCKUPS -->
+      <div class="logo-section-title">Apparel Graphics</div>
+      <div class="apparel-strip">
+        <div class="ap-card">
+          <div class="ap-visual ap-v1">
+            <div class="ap-tee">
+              <div class="ap-tee-sleeve-l"></div>
+              <div class="ap-tee-sleeve-r"></div>
+              <div class="ap-tee-body"></div>
+              <div class="ap-tee-collar"></div>
+              <div class="ap-tee-graphic">WILD<br />SS·25</div>
+            </div>
+          </div>
+          <div class="ap-info">
+            <h4>Graphic Tee — SS25 Collection</h4>
+            <p>Front chest print · Flame colourway</p>
+          </div>
+        </div>
+        <div class="ap-card">
+          <div class="ap-visual ap-v2">
+            <div class="ap-hoodie-text">WILD</div>
+          </div>
+          <div class="ap-info">
+            <h4>Oversized Hoodie — Back Print</h4>
+            <p>AW24 Drop #3 · Oversized wordmark</p>
+          </div>
+        </div>
+        <div class="ap-card">
+          <div class="ap-visual ap-v3">
+            <div class="ap-hangtag">
+              <div class="ap-hole"></div>
+              <div class="ap-hangtag-brand">WILD</div>
+              <div class="ap-hangtag-line"></div>
+              <div class="ap-hangtag-size">SIZE M · SS25</div>
+            </div>
+          </div>
+          <div class="ap-info">
+            <h4>Hangtag Design</h4>
+            <p>Packaging · All collections</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOOKBOOK CAROUSEL -->
+      <div class="lookbook-section">
+        <div class="lookbook-nav">
+          <h3>Campaign Lookbook</h3>
+          <div class="lb-controls">
+            <button class="lb-btn" id="lb-prev">
+              <i class="bx bx-chevron-left"></i>
+            </button>
+            <button class="lb-btn" id="lb-next">
+              <i class="bx bx-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+        <div class="lookbook-track-wrap">
+          <div class="lookbook-track" id="lb-track">
+            <div class="lb-slide">
+              <div class="lb-img lb-img-1">
+                <div class="lb-glyph">W</div>
+                <div class="lb-overlay">
+                  <div class="lb-tag">SS25 · Drop 1</div>
+                  <div class="lb-caption">Campaign Launch</div>
+                </div>
+              </div>
+              <div class="lb-desc">
+                Opening campaign imagery for the SS25 launch — editorial
+                direction, lighting reference, and final comp layout.
+              </div>
+            </div>
+            <div class="lb-slide">
+              <div class="lb-img lb-img-2">
+                <div class="lb-glyph">F</div>
+                <div class="lb-overlay">
+                  <div class="lb-tag">AW24 · Editorial</div>
+                  <div class="lb-caption">Lookbook Spread</div>
+                </div>
+              </div>
+              <div class="lb-desc">
+                Full AW24 lookbook spread — 12-page digital PDF distributed
+                across social and e-commerce channels.
+              </div>
+            </div>
+            <div class="lb-slide">
+              <div class="lb-img lb-img-3">
+                <div class="lb-glyph">·</div>
+                <div class="lb-overlay">
+                  <div class="lb-tag">Packaging</div>
+                  <div class="lb-caption">Unboxing Design</div>
+                </div>
+              </div>
+              <div class="lb-desc">
+                Packaging design for SS25 — tissue wrap pattern, sticker set,
+                and branded mailer bag.
+              </div>
+            </div>
+            <div class="lb-slide">
+              <div class="lb-img lb-img-4">
+                <div class="lb-glyph">W</div>
+                <div class="lb-overlay">
+                  <div class="lb-tag">Drop #4 · Campaign</div>
+                  <div class="lb-caption">Social Campaign</div>
+                </div>
+              </div>
+              <div class="lb-desc">
+                Social media campaign for Drop #4 — feed grid layout, story
+                templates, and reel cover frames.
+              </div>
+            </div>
+            <div class="lb-slide">
+              <div class="lb-img lb-img-5">
+                <div class="lb-glyph">F</div>
+                <div class="lb-overlay">
+                  <div class="lb-tag">Brand Launch</div>
+                  <div class="lb-caption">Identity Reveal</div>
+                </div>
+              </div>
+              <div class="lb-desc">
+                Brand identity reveal post — animated logo reveal sequence
+                designed for Instagram Stories.
+              </div>
+            </div>
+            <div class="lb-slide">
+              <div class="lb-img lb-img-6">
+                <div class="lb-glyph">H</div>
+                <div class="lb-overlay">
+                  <div class="lb-tag">Hoodie Drop · AW24</div>
+                  <div class="lb-caption">Product Campaign</div>
+                </div>
+              </div>
+              <div class="lb-desc">
+                Hero campaign visuals for the AW24 hoodie drop — dark editorial
+                style with product placement direction.
+              </div>
             </div>
           </div>
         </div>
@@ -787,8 +1425,8 @@
       <div class="next-inner">
         <div>
           <div class="next-label">Next Project</div>
-          <div class="next-title">The 17th Century — Social & Motion</div>
-          <a href="project-17th-century.html" class="next-btn"
+          <div class="next-title">GrowthQuest — Multi-Client Agency Work</div>
+          <a href="project-growthquest.html" class="next-btn"
             >View Case Study <i class="bx bx-right-arrow-alt"></i
           ></a>
         </div>
@@ -797,7 +1435,6 @@
         >
       </div>
     </div>
-
     <script>
       const cursor = document.getElementById("cursor"),
         ring = document.getElementById("cursor-ring");
@@ -818,6 +1455,60 @@
         ring.style.top = ry + "px";
         requestAnimationFrame(a);
       })();
+
+      // Colour palette preview
+      document.querySelectorAll(".palette-swatch").forEach((sw) => {
+        sw.addEventListener("mouseenter", () => {
+          const bg = sw.dataset.bg,
+            text = sw.dataset.text,
+            name = sw.dataset.name;
+          document.getElementById("colour-preview").style.background = bg;
+          document.getElementById("cp-logo").style.color =
+            name === "Flame"
+              ? "#0f0c0a"
+              : name === "Parchment"
+                ? "#f97316"
+                : "#f97316";
+          document.getElementById("cp-text").style.color = text;
+        });
+      });
+
+      // Lookbook carousel
+      const track = document.getElementById("lb-track");
+      const slides = track.querySelectorAll(".lb-slide");
+      let idx = 0;
+      function slidesPerView() {
+        return window.innerWidth < 600 ? 1 : window.innerWidth < 900 ? 2 : 3;
+      }
+      function updateCarousel() {
+        const spv = slidesPerView();
+        const slideW = 100 / spv;
+        slides.forEach(
+          (s) =>
+            (s.style.width = `calc(${slideW}% - ${((spv - 1) * 1.25) / spv}rem)`),
+        );
+        const maxIdx = Math.max(0, slides.length - spv);
+        idx = Math.min(idx, maxIdx);
+        const offset = idx * (100 / spv + 1.25 / spv);
+        track.style.transform = `translateX(calc(-${offset}%))`;
+      }
+      document.getElementById("lb-next").addEventListener("click", () => {
+        const spv = slidesPerView();
+        if (idx < slides.length - spv) {
+          idx++;
+          updateCarousel();
+        }
+      });
+      document.getElementById("lb-prev").addEventListener("click", () => {
+        if (idx > 0) {
+          idx--;
+          updateCarousel();
+        }
+      });
+      window.addEventListener("resize", () => updateCarousel());
+      updateCarousel();
+
+      // Fade
       const obs = new IntersectionObserver(
         (entries) =>
           entries.forEach((e) => {
